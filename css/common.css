@@ -1,0 +1,438 @@
+/* ===================================================
+   common.css — 全ページ共通（変数・ヘッダー・フッター・汎用パーツ）
+=================================================== */
+
+html {
+    scroll-behavior: smooth;
+    font-size: min(calc(10 / 1440 * 100vw), 10px);
+}
+
+@media (max-width: 1024px) {
+    html {
+        font-size: min(calc(10 / 900 * 100vw), 10px);
+    }
+}
+
+@media screen and (max-width: 767px) {
+    html {
+        font-size: min(calc(10 / 700 * 100vw), 10px);
+    }
+}
+
+@media (max-width: 480px) {
+    html {
+        font-size: min(calc(10 / 400 * 100vw), 10px);
+    }
+}
+
+:root {
+    --ink: #0a0a09;
+    --iron: #141311;
+    --blood: #a3222c;
+    --ember: #d17b7f;
+    --bone: #f2ede4;
+    --paper: #0a0a09;
+    --smoke: #8f877a;
+    --line: rgba(242, 237, 228, .09);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--paper);
+    color: var(--bone);
+    font-family: "Noto Sans JP", sans-serif;
+    line-height: 1.8;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 999;
+    opacity: .05;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
+}
+
+.eyebrow {
+    font-size: 1.152rem;
+    letter-spacing: .3em;
+    color: var(--ember);
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+/* ---- header ---- */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2.2rem 6vw;
+    background: linear-gradient(180deg, rgba(12, 10, 9, .92), transparent);
+    backdrop-filter: blur(2px);
+}
+
+.logo-mark {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.84rem;
+    letter-spacing: .06em;
+    color: var(--bone);
+}
+
+.logo-mark span {
+    color: var(--blood);
+}
+
+nav {
+    display: flex;
+    gap: 2.4vw;
+    font-size: 1.36rem;
+    letter-spacing: .05em;
+}
+
+nav a {
+    opacity: .75;
+    transition: opacity .25s, color .25s;
+}
+
+nav a:hover {
+    opacity: 1;
+    color: var(--ember);
+}
+
+/* ---- buttons ---- */
+.btn {
+    padding: 1.6rem 4rem;
+    font-size: 1.216rem;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    font-weight: 500;
+    border-radius: 0;
+    transition: transform .25s, box-shadow .25s, background .25s, color .25s, border-color .25s;
+    display: inline-block;
+}
+
+.btn-primary {
+    background: var(--blood);
+    color: var(--bone);
+    box-shadow: 0 4px 20px rgba(163, 34, 44, .2);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 26px rgba(163, 34, 44, .35);
+    background: var(--ember);
+}
+
+.btn-ghost {
+    border: 1px solid var(--line);
+    color: var(--bone);
+}
+
+.btn-ghost:hover {
+    border-color: var(--blood);
+    color: var(--ember);
+}
+
+/* ---- section shell (トップの各セクション共通) ---- */
+section {
+    padding: 13rem 6vw;
+    position: relative;
+}
+
+.section-head {
+    max-width: 640px;
+    margin-bottom: 6.4rem;
+}
+
+.section-head h2 {
+    font-family: "Shippori Mincho", serif;
+    font-size: clamp(3.2rem, 4vw, 4.8rem);
+    margin-top: 1.4rem;
+    color: var(--bone);
+}
+
+.section-head p {
+    margin-top: 2rem;
+    color: var(--smoke);
+    font-size: 1.568rem;
+    max-width: 52ch;
+}
+
+/* ---- sub page header（下層ページ共通） ---- */
+.page-header {
+    padding: 17rem 6vw 7rem;
+    border-bottom: 1px solid var(--line);
+    background: var(--paper);
+}
+
+.breadcrumb {
+    font-size: 1.248rem;
+    color: var(--smoke);
+    letter-spacing: .04em;
+    margin-bottom: 2rem;
+}
+
+.breadcrumb a {
+    color: var(--smoke);
+    transition: color .25s;
+}
+
+.breadcrumb a:hover {
+    color: var(--ember);
+}
+
+.page-header h1 {
+    font-family: "Shippori Mincho", serif;
+    font-size: clamp(3.52rem, 5vw, 5.76rem);
+}
+
+.page-header .eyebrow {
+    margin-bottom: 1.6rem;
+}
+
+.page-lead {
+    color: var(--smoke);
+    margin-top: 2.2rem;
+    max-width: 56ch;
+    font-size: 1.6rem;
+}
+
+/* ---- content blocks（下層ページ本文共通） ---- */
+.content {
+    padding: 10rem 6vw;
+}
+
+.content-narrow {
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+.content h2 {
+    font-family: "Shippori Mincho", serif;
+    font-size: clamp(2.56rem, 3vw, 3.52rem);
+    margin: 6rem 0 2.2rem;
+}
+
+.content h2:first-child {
+    margin-top: 0;
+}
+
+.content p {
+    color: var(--smoke);
+    margin-bottom: 1.8rem;
+    font-size: 1.568rem;
+}
+
+.content ul {
+    margin: 0 0 2.4rem 1.2em;
+    color: var(--smoke);
+}
+
+.content li {
+    margin-bottom: 1rem;
+}
+
+.content strong {
+    color: var(--bone);
+}
+
+/* ---- 会社概要テーブル（index / company で共用） ---- */
+.ov-table {
+    border-top: 1px solid var(--line);
+}
+
+.ov-row {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 2.4rem;
+    padding: 2.4rem 0;
+    border-bottom: 1px solid var(--line);
+}
+
+.ov-row dt {
+    color: var(--ember);
+    font-size: 1.312rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+}
+
+.ov-row dd {
+    color: var(--bone);
+    font-size: 1.536rem;
+}
+
+/* ---- ニュースリスト（index / news で共用） ---- */
+.news-list {
+    border-top: 1px solid var(--line);
+}
+
+.news-item {
+    display: grid;
+    grid-template-columns: 120px 100px 1fr 20px;
+    gap: 2.4rem;
+    align-items: center;
+    padding: 2.6rem 0;
+    border-bottom: 1px solid var(--line);
+    transition: padding-left .3s, background .3s;
+}
+
+.news-item:hover {
+    padding-left: 1.4rem;
+    background: rgba(163, 34, 44, .05);
+}
+
+.news-item time {
+    color: var(--smoke);
+    font-size: 1.312rem;
+    letter-spacing: .05em;
+}
+
+.news-item .tag {
+    font-size: 1.088rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ember);
+    border: 1px solid rgba(163, 34, 44, .35);
+    padding: 0.4rem 1rem;
+    text-align: center;
+}
+
+.news-item p {
+    color: var(--bone);
+    font-size: 1.52rem;
+}
+
+.news-item .arrow {
+    color: var(--smoke);
+    transition: transform .3s, color .3s;
+}
+
+.news-item:hover .arrow {
+    transform: translateX(6px);
+    color: var(--ember);
+}
+
+/* ---- footer ---- */
+footer {
+    padding: 6rem 6vw 4rem;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 3rem;
+}
+
+.foot-brand {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 2.24rem;
+}
+
+.foot-brand span {
+    color: var(--blood);
+}
+
+.foot-tag {
+    color: var(--smoke);
+    font-size: 1.28rem;
+    margin-top: 0.8rem;
+    letter-spacing: .05em;
+}
+
+.foot-links {
+    display: flex;
+    gap: 2.6rem;
+    font-size: 1.312rem;
+    flex-wrap: wrap;
+}
+
+.foot-links a {
+    color: var(--smoke);
+    transition: color .25s;
+}
+
+.foot-links a:hover {
+    color: var(--ember);
+}
+
+.foot-copy {
+    width: 100%;
+    color: var(--smoke);
+    font-size: 1.152rem;
+    margin-top: 3rem;
+    opacity: .6;
+}
+
+/* ---- scroll reveal ---- */
+.reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity .8s ease, transform .8s ease;
+}
+
+.reveal.in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (prefers-reduced-motion:reduce) {
+    .reveal {
+        transition: none;
+        opacity: 1;
+        transform: none;
+    }
+
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+/* ---- responsive（共通） ---- */
+@media (max-width:860px) {
+    nav {
+        display: none;
+    }
+
+    section {
+        padding: 9rem 6vw;
+    }
+
+    .ov-row {
+        grid-template-columns: 1fr;
+        gap: 0.6rem;
+    }
+
+    .news-item {
+        grid-template-columns: 80px 1fr 16px;
+    }
+
+    .news-item .tag {
+        display: none;
+    }
+}

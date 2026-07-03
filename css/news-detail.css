@@ -1,0 +1,33 @@
+/* ===================================================
+   news-detail.css — NEWS詳細ページ（news-detail.html）専用
+=================================================== */
+
+.article-meta {
+    display: flex;
+    gap: 1.6rem;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+.article-meta time {
+    color: var(--smoke);
+    font-size: 1.36rem;
+}
+
+.article-body p {
+    color: var(--smoke);
+    margin-bottom: 2rem;
+    font-size: 1.568rem;
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 5rem;
+    color: var(--smoke);
+    font-size: 1.36rem;
+    transition: color .25s;
+}
+
+.back-link:hover {
+    color: var(--ember);
+}

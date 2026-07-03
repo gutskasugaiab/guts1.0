@@ -1,0 +1,51 @@
+/* ===================================================
+   business-detail.css — 事業詳細ページ（business-outsourcing / business-brand / business-carenaviai）専用
+=================================================== */
+
+.detail-hero {
+    aspect-ratio: 21/9;
+    background: var(--iron);
+    border: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 6rem;
+}
+
+.detail-hero span {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 6.4rem;
+    color: rgba(242, 237, 228, .06);
+}
+
+.feature-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.1rem;
+    background: var(--line);
+    margin: 2rem 0 5rem;
+}
+
+.feature-card {
+    background: var(--paper);
+    padding: 3.8rem 3rem;
+}
+
+.feature-card b {
+    display: block;
+    font-family: "Shippori Mincho", serif;
+    font-size: 1.76rem;
+    margin-bottom: 1rem;
+    color: var(--bone);
+}
+
+.feature-card p {
+    margin: 0;
+    font-size: 1.44rem;
+}
+
+@media (max-width:860px) {
+    .feature-list {
+        grid-template-columns: 1fr;
+    }
+}

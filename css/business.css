@@ -1,0 +1,56 @@
+/* ===================================================
+   business.css — 事業内容インデックス（business.html）専用
+=================================================== */
+
+.biz-index-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.1rem;
+    background: var(--line);
+}
+
+.biz-index-card {
+    background: var(--paper);
+    padding: 5.6rem 4rem;
+    display: flex;
+    flex-direction: column;
+    transition: background .35s;
+}
+
+.biz-index-card:hover {
+    background: var(--iron);
+}
+
+.biz-index-card .num {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.248rem;
+    color: var(--blood);
+    letter-spacing: .2em;
+    margin-bottom: 2rem;
+}
+
+.biz-index-card h3 {
+    font-family: "Shippori Mincho", serif;
+    font-size: 2.24rem;
+    margin-bottom: 1.4rem;
+}
+
+.biz-index-card p {
+    color: var(--smoke);
+    font-size: 1.472rem;
+    margin-bottom: 2.4rem;
+    flex: 1;
+}
+
+.biz-index-card .more {
+    font-size: 1.28rem;
+    letter-spacing: .1em;
+    color: var(--ember);
+    text-transform: uppercase;
+}
+
+@media (max-width:860px) {
+    .biz-index-grid {
+        grid-template-columns: 1fr;
+    }
+}

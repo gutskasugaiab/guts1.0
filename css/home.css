@@ -1,0 +1,259 @@
+/* ===================================================
+   home.css — トップページ（index.html）専用
+   R.L waffle参考：黒×ゴールドの上品なミニマルデザイン
+=================================================== */
+
+/* ---- hero ---- */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    padding: 12rem 6vw 8rem;
+    background: var(--paper);
+}
+
+.hero-eyebrow {
+    font-size: 1.152rem;
+    letter-spacing: .45em;
+    color: var(--smoke);
+    text-transform: uppercase;
+    margin-bottom: 3.4rem;
+}
+
+.hero img {
+    margin: 0 auto;
+    width: 40vw;
+}
+
+.hero-tag {
+    margin-top: 3.8rem;
+    font-size: 1.36rem;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    color: var(--smoke);
+}
+
+.hero-tag b {
+    color: var(--ember);
+    font-weight: 400;
+    opacity: .6;
+}
+
+.scratch {
+    width: 1px;
+    height: 64px;
+    margin: 4.4rem auto 0;
+    background: var(--blood);
+    opacity: .5;
+    border: none;
+}
+
+.cta-row {
+    margin-top: 5rem;
+    display: flex;
+    gap: 1.8rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* ---- about / mission ---- */
+.about {
+    background: var(--paper);
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: .8fr 1.1fr;
+    gap: 9rem;
+    align-items: center;
+}
+
+.about-visual {
+    aspect-ratio: 4/5;
+    background: var(--iron);
+    border: 1px solid var(--line);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-visual span {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 8rem;
+    color: rgba(242, 237, 228, .06);
+}
+
+.about-copy p {
+    color: var(--smoke);
+    margin-bottom: 2.2rem;
+    font-size: 1.568rem;
+    letter-spacing: .02em;
+}
+
+.about-copy strong {
+    color: var(--bone);
+    font-weight: 500;
+}
+
+.g-u-t-s {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2.4rem;
+    margin-top: 4.8rem;
+}
+
+.g-u-t-s div {
+    border-left: 1px solid var(--blood);
+    padding-left: 1.6rem;
+}
+
+.g-u-t-s div b {
+    font-family: "Cormorant Garamond", serif;
+    color: var(--ember);
+    font-size: 2.4rem;
+    display: block;
+    font-weight: 500;
+}
+
+.g-u-t-s div small {
+    color: var(--smoke);
+    font-size: 1.184rem;
+    letter-spacing: .08em;
+}
+
+/* ---- business cards（3事業） ---- */
+.business {
+    background: var(--paper);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+}
+
+.biz-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.1rem;
+    background: var(--line);
+}
+
+.biz-card {
+    background: var(--paper);
+    padding: 6.4rem 4.6rem;
+    position: relative;
+    transition: background .35s;
+    display: block;
+}
+
+.biz-card:hover {
+    background: var(--iron);
+}
+
+.biz-num {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.36rem;
+    color: var(--blood);
+    letter-spacing: .25em;
+    margin-bottom: 2.6rem;
+    display: block;
+}
+
+.biz-card h3 {
+    font-family: "Shippori Mincho", serif;
+    font-weight: 600;
+    font-size: 2.4rem;
+    margin-bottom: 2rem;
+    letter-spacing: .03em;
+}
+
+.biz-card p {
+    color: var(--smoke);
+    font-size: 1.472rem;
+    margin-bottom: 2.6rem;
+    letter-spacing: .02em;
+}
+
+.biz-tags {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+}
+
+.biz-tags span {
+    font-size: 1.056rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    border: 1px solid var(--line);
+    color: var(--smoke);
+    padding: 0.6rem 1.2rem;
+}
+
+/* ---- overview section（会社概要の抜粋） ---- */
+.overview {
+    background: var(--paper);
+}
+
+/* ---- news section（トップ内） ---- */
+.news {
+    background: var(--paper);
+}
+
+/* ---- CTAバンド（お問い合わせ誘導） ---- */
+.band {
+    padding: 13rem 6vw;
+    text-align: center;
+    background: var(--paper);
+    border-top: 1px solid var(--line);
+}
+
+.band h2 {
+    font-family: "Shippori Mincho", serif;
+    font-weight: 600;
+    font-size: clamp(2.56rem, 3vw, 3.84rem);
+    margin-bottom: 2.6rem;
+    letter-spacing: .05em;
+}
+
+.band p {
+    color: var(--smoke);
+    margin-bottom: 4rem;
+}
+
+.sp-v {
+    display: none;
+}
+
+/* ---- responsive ---- */
+@media (max-width:860px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+    }
+
+    .about-visual {
+        aspect-ratio: 6/4;
+
+    }
+
+    .g-u-t-s {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .pc-v {
+        display: none;
+    }
+
+    .sp-v {
+        display: block;
+    }
+}
+
+@media (max-width:1080px) {
+    .biz-grid {
+        grid-template-columns: 1fr;
+    }
+}
