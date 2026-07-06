@@ -1,0 +1,117 @@
+/* プライバシーポリシー */
+
+:root {
+  --black: #010101;
+  --white: #fff;
+  --red: #e60012;
+  --text1: #888;
+  --text2: #C8C8C8;
+}
+
+body {
+  background-color: var(--black);
+  padding: 0 50px;
+}
+
+br.sp-only{
+  display: block;
+}
+@media (min-width: 950px) {
+  br.sp-only{
+    display: none;
+  }
+}
+
+.title{
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+h2.en {
+  margin-bottom: 60px;
+  font-size: max(3.2rem, 8.3333333333vw);
+  font-weight: 400;
+  font-family: europa, fot-cezanne-pron, sans-serif;
+  color: var(--white);
+  line-height: 1.2;
+}
+
+h2.jp {
+  margin-left: auto;
+  writing-mode: vertical-rl;
+  color: var(--white);
+  font-size: 14px;
+  font-family: serif;
+  letter-spacing: .2em;
+}
+
+h2.section-title{
+  color: var(--white);
+  font-size: 24px;
+  font-family: serif;
+}
+
+.policy {
+  margin: 80px auto;
+  color: var(--text1);
+  font-size: 14px;
+  line-height: 2;
+}
+@media (min-width: 950px) {
+  .policy {
+    display: flex;
+    gap: 50px;
+  }
+}
+
+.policy .index {
+  display: none;
+}
+@media (min-width: 950px) {
+  .policy .index {
+    display: block;
+    flex: 0 0 250px;
+  }
+}
+
+.policy .index li {
+  line-height: 1.5;
+}
+.policy .index a {
+  color: var(--text1);
+  text-decoration: none;
+}
+.policy .index a:hover {
+  color: var(--red);
+}
+
+.policy h3 {
+  margin: 70px 0 25px;
+  font-size: 18px;
+  font-family: serif;
+  font-weight: 400;
+  color: var(--white);
+  line-height: 1.8;
+}
+
+.policy h4 {
+  color: var(--text2);
+}
+
+.policy .lead {
+  color: var(--text2);
+}
+
+.policy ol {
+  padding-left: 1em;
+  color: var(--text1);
+}
+.policy ol li {
+  padding-left: 1em;
+  padding-top: .9em;
+}
+.policy ol li::marker {
+  color: var(--text2);
+}
