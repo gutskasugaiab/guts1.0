@@ -16,18 +16,6 @@
     background: var(--paper);
 }
 
-.hero::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 160px;
-    pointer-events: none;
-    background: linear-gradient(180deg, transparent, var(--paper));
-    pointer-events: none;
-}
-
 .hero-eyebrow {
     font-size: 1.152rem;
     letter-spacing: .45em;
@@ -36,46 +24,9 @@
     margin-bottom: 3.4rem;
 }
 
-.hero h1 {
-    font-family: "Cormorant Garamond", serif;
-    font-weight: 500;
-    font-size: clamp(4.8rem, 10vw, 12rem);
-    line-height: 1;
-    letter-spacing: .04em;
-    color: var(--bone);
-}
-
-.hero-jp {
-    font-family: "Shippori Mincho", serif;
-    font-weight: 600;
-    font-size: clamp(2.08rem, 3.2vw, 3.2rem);
-    color: var(--ember);
-    margin-top: 1.4rem;
-    letter-spacing: .35em;
-    padding-left: .35em;
-}
-
-.hero-tag {
-    margin-top: 3.8rem;
-    font-size: 1.36rem;
-    letter-spacing: .3em;
-    text-transform: uppercase;
-    color: var(--smoke);
-}
-
-.hero-tag b {
-    color: var(--ember);
-    font-weight: 400;
-    opacity: .6;
-}
-
-.scratch {
-    width: 1px;
-    height: 64px;
-    margin: 4.4rem auto 0;
-    background: var(--blood);
-    opacity: .5;
-    border: none;
+.hero img {
+    width: 40vw;
+    margin: 0 auto;
 }
 
 .cta-row {
@@ -93,7 +44,7 @@
 
 .about-grid {
     display: grid;
-    grid-template-columns: 1.1fr .9fr;
+    grid-template-columns: .8fr 1fr;
     gap: 9rem;
     align-items: center;
 }
@@ -159,11 +110,14 @@
 
     .sp-v {
         display: flex;
+        grid-column: 1;
+        grid-row: 1;
         aspect-ratio: 6 / 4;
     }
 
     .about-copy {
         grid-column: 1;
+        grid-row: 2;
     }
 }
 

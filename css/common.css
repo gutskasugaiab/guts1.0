@@ -89,7 +89,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 2.2rem 6vw;
+    padding: 1rem 6vw;
     background: linear-gradient(180deg, rgba(12, 10, 9, .92), transparent);
     backdrop-filter: blur(2px);
 }
@@ -100,7 +100,7 @@ header {
 }
 
 .logo-mark img {
-    height: 5.6rem;
+    height: 7.6rem;
     width: auto;
     display: block;
 }
