@@ -4,9 +4,19 @@
 
 .biz-index-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
     gap: 0.1rem;
     background: var(--line);
+}
+
+.biz-row{
+    display:grid;
+    grid-template-columns:3fr 2fr;
+    gap: 0.1rem;
+    background: var(--line);
+}
+
+.biz-row.reverse{
+    grid-template-columns:2fr 3fr;
 }
 
 .biz-index-card {
@@ -15,6 +25,11 @@
     display: flex;
     flex-direction: column;
     transition: background .35s;
+}
+
+.biz-index-card,
+.biz-index-image{
+    min-height:36rem;
 }
 
 .biz-index-card:hover {
