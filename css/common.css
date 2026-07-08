@@ -465,17 +465,26 @@ footer {
     opacity: .6;
 }
 
-/* ---- scroll reveal ---- */
-.reveal {
+/* =========================
+スクロールアニメ
+========================= */
+
+.fade-up {
     opacity: 0;
-    transform: translateY(24px);
-    transition: opacity .8s ease, transform .8s ease;
+    transform: translateY(60px);
+    filter: blur(8px);
+    transition:
+        opacity 1.4s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 1.4s cubic-bezier(0.22, 1, 0.36, 1),
+        filter 1.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.reveal.in {
+.fade-up.show {
     opacity: 1;
     transform: translateY(0);
+    filter: blur(0);
 }
+
 
 @media (prefers-reduced-motion:reduce) {
     .reveal {

@@ -90,8 +90,24 @@
     }
 })();
 
-const els = document.querySelectorAll('.reveal');
-const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-}, { threshold: .15 });
-els.forEach(el => io.observe(el));
+const fadeUps = document.querySelectorAll('.fade-up');
+
+const observer = new IntersectionObserver((entries) => {
+
+  entries.forEach((entry) => {
+
+    if (entry.isIntersecting) {
+
+      entry.target.classList.add('show');
+
+    }
+
+  });
+
+}, {
+  threshold: 0.2
+});
+
+fadeUps.forEach((fadeUp) => {
+  observer.observe(fadeUp);
+});
