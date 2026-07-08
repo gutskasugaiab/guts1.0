@@ -149,9 +149,31 @@
 
 .biz-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+    background: var(--line);
+}
+
+.biz-row{
+    display:grid;
+    grid-template-columns:2fr 3fr;
     gap: 0.1rem;
     background: var(--line);
+}
+
+.biz-row.reverse{
+    grid-template-columns:3fr 2fr;
+}
+
+.biz-image{
+    overflow: hidden;
+    background: var(--paper);
+}
+
+.biz-image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 .biz-card {
@@ -160,6 +182,11 @@
     position: relative;
     transition: background .35s;
     display: block;
+}
+
+.biz-card,
+.biz-image{
+    min-height:36rem;
 }
 
 .biz-card:hover {
