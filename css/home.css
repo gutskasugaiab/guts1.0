@@ -149,8 +149,8 @@
 
 .biz-grid {
     display: grid;
-    gap: 2rem;
-    background: var(--line);
+    gap: 6rem;
+    background: var(--paper);
 }
 
 .biz-row{
