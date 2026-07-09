@@ -50,7 +50,8 @@
 
 .biz-index-card .num {
     font-family: "Cormorant Garamond", serif;
-    font-size: 1.8rem;
+    font-size: 10rem;
+    font-weight: 400;
     color: var(--blood);
     letter-spacing: .2em;
     margin-bottom: 1rem;
