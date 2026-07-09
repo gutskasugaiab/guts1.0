@@ -49,12 +49,19 @@
 }
 
 .biz-index-card .num {
+    font-size: 1.152rem;
+      letter-spacing: .3em;
+      color: var(--ember);
+      text-transform: uppercase;
+      font-weight: 700;
+/*
     font-family: "Cormorant Garamond", serif;
     font-size: 10rem;
     font-weight: 400;
     color: var(--blood);
     letter-spacing: .2em;
     margin-bottom: 1rem;
+    */
 }
 
 .biz-index-card h3 {
