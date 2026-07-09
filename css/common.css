@@ -485,6 +485,9 @@ footer {
     filter: blur(0);
 }
 
+.sp-br {
+    display: none;
+}
 
 @media (prefers-reduced-motion:reduce) {
     .reveal {
@@ -523,5 +526,13 @@ footer {
 
     .news-item .tag {
         display: none;
+    }
+
+    .pc-br {
+        display: none;
+    }
+
+    .sp-br {
+        display: block;
     }
 }
