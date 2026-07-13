@@ -235,6 +235,11 @@ nav.nav-desktop a.active {
 }
 
 /* ---- section shell (トップの各セクション共通) ---- */
+main{
+    background: var(--paper) url("../img/bg-top.png") no-repeat top right;
+    background-size: 50%;
+}
+
 section {
     padding: 13rem 6vw;
     position: relative;
@@ -263,7 +268,7 @@ section {
 .page-header {
     padding: 17rem 6vw 7rem;
     border-bottom: 1px solid var(--line);
-    background: var(--paper);
+
 }
 
 .breadcrumb {
