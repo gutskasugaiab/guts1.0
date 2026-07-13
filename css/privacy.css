@@ -13,17 +13,37 @@
   }
 }
 
+.policy a {
+  color: inherit;
+}
+.policy a:hover {
+  color: var(--ember);
+}
+
 .policy .index {
   display: none;
 }
 @media (min-width: 950px) {
   .policy .index {
     display: block;
-    flex: 0 0 250px;
+    margin: 0;
+    padding: 0;
+    flex: 0 0 18em;
   }
 }
 
-.policy h2 {
+.policy .index li {
+  list-style: none;
+  margin: 0;
+  padding: .5em 0;
+}
+
+.policy .article {
+  margin: 0;
+  padding: 0;
+}
+
+.policy .article h2 {
   margin: 70px 0 25px;
   font-size: 18px;
   font-family: serif;
@@ -32,22 +52,21 @@
   line-height: 1.8;
 }
 
-.policy h4 {
+.policy .article h4 {
   color: var(--bone);
 }
 
-.policy .lead {
+.policy .article .lead {
   color: var(--bone);
 }
 
-.policy ol {
+.policy .article ol {
   padding-left: 1em;
-  color: var(--smoke);
 }
-.policy ol li {
+.policy .article ol li {
   padding-left: 1em;
   padding-top: .9em;
 }
-.policy ol li::marker {
+.policy .article ol li::marker {
   color: var(--bone);
 }
