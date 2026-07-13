@@ -58,6 +58,20 @@
   gap: 1rem;
 }
 
+.feature-card .tag {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.feature-card .tag span {
+  margin: .5em 1em .5em 0;
+  padding: .1em .7em .2em .7em;
+  color: var(--bone);
+  font-size: 1.2rem;
+  border: 2px solid var(--blood);
+  border-radius: 9999px;
+}
+
 .feature-card .fa-solid {
   margin-top: .8rem;
   font-size: 2em;
