@@ -6,6 +6,7 @@
         { href: 'company.html', label: '会社概要' },
         { href: 'business.html', label: '事業内容' },
         { href: 'news.html', label: 'NEWS' },
+        { href: 'blog.html', label: 'BLOG' },
         { href: 'contact.html', label: 'CONTACT' }
     ];
 
