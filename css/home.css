@@ -31,7 +31,7 @@
   object-fit: cover;
   display: block;
   margin: auto;
-  transform: translateY(40%);
+  transform: translateY(30%);
 }
 
 @keyframes loaderFadeIn {
