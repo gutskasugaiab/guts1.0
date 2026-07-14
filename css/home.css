@@ -3,6 +3,41 @@
    R.L waffle参考：黒×ゴールドの上品なミニマルデザイン
 =================================================== */
 
+/* ローディング画面 */
+#loader {
+  position: fixed;
+  inset: 0;
+  background: #0a0a0a;
+  z-index: 9999;
+  overflow: hidden;
+}
+#loader.loaded {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 1.8s ease, visibility 1.8s ease;
+}
+
+.loader-video-wrap {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  animation: loaderFadeIn 0.6s ease forwards 0.1s;
+}
+
+.loader-video-wrap video {
+  width: 50rem;
+  height: 40rem;
+  object-fit: cover;
+  display: block;
+  margin: auto;
+  transform: translateY(40%);
+}
+
+@keyframes loaderFadeIn {
+  to { opacity: 1; }
+}
+
 /* ---- hero ---- */
 .hero {
     min-height: 100vh;

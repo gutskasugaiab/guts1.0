@@ -112,3 +112,27 @@ const observer = new IntersectionObserver((entries) => {
 fadeUps.forEach((fadeUp) => {
   observer.observe(fadeUp);
 });
+
+const loader = document.getElementById('loader');
+const loaderVideo = document.getElementById('loaderVideo');
+
+if (loader && loaderVideo) {
+  const fadeBeforeEnd = 0.5; // 終了の何秒前からフェードアウトを始めるか
+
+  loaderVideo.addEventListener('loadedmetadata', () => {
+    const duration = loaderVideo.duration;
+    const fadeStartTime = Math.max(0, duration - fadeBeforeEnd);
+
+    loaderVideo.addEventListener('timeupdate', function checkTime() {
+      if (loaderVideo.currentTime >= fadeStartTime) {
+        loader.classList.add('loaded');
+        loaderVideo.removeEventListener('timeupdate', checkTime);
+      }
+    });
+  });
+
+  // 保険: メタデータ取得に失敗した場合は6秒後に強制フェードアウト
+  setTimeout(() => {
+    loader.classList.add('loaded');
+  }, 6000);
+}
