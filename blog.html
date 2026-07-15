@@ -20,32 +20,41 @@
     </header>
 
     <main>
+        <video class="bg-video" autoplay muted playsinline>
+            <source src="img/ウェーブ.mp4" type="video/mp4">
+        </video>
 
-        <div class="page-header">
-            <div class="breadcrumb fade-up"><a href="index.html">TOP</a> / BLOG</div>
-            <div class="eyebrow fade-up">JOURNAL</div>
-            <h1 class="fade-up">BLOG</h1>
+        <div class="main-content">
+
+            <div class="page-header">
+                <div class="breadcrumb fade-up"><a href="index.html">TOP</a> / BLOG</div>
+                <div class="eyebrow fade-up">JOURNAL</div>
+                <h1 class="fade-up">BLOG</h1>
+            </div>
+
+            <section class="content">
+
+                <div class="blog-filter fade-up" id="blog-filter">
+                    <!-- カテゴリボタンが自動生成されます -->
+                </div>
+
+                <div class="blog-grid" id="blog-grid">
+                    <!-- blog.json から自動生成されます -->
+                </div>
+
+                <div class="blog-pagination" id="blog-pagination">
+                    <!-- ページ番号ボタンが自動生成されます -->
+                </div>
+
+            </section>
         </div>
-
-        <section class="content">
-
-            <div class="blog-filter fade-up" id="blog-filter">
-                <!-- カテゴリボタンが自動生成されます -->
-            </div>
-
-            <div class="blog-grid" id="blog-grid">
-                <!-- blog.json から自動生成されます -->
-            </div>
-
-            <div class="blog-pagination" id="blog-pagination">
-                <!-- ページ番号ボタンが自動生成されます -->
-            </div>
-
-        </section>
+        <video class="bg-video-btm" id="bgVideoBtm" muted playsinline>
+            <source src="img/ウェーブ2.mp4" type="video/mp4">
+        </video>
 
     </main>
 
-    <footer id="site-footer">
+    <footer class="main-content" id="site-footer">
     </footer>
 
     <script src="js/common.js"></script>

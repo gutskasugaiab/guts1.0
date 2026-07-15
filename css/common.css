@@ -31,7 +31,7 @@ html {
     --blood: #a3222c;
     --ember: #d17b7f;
     --bone: #f2ede4;
-    --paper: #0a0a09;
+    --paper: #000;
     --smoke: #8f877a;
     --line: rgba(242, 237, 228, .09);
 }
@@ -48,6 +48,8 @@ body {
     font-family: "Noto Sans JP", sans-serif;
     line-height: 1.8;
     overflow-x: hidden;
+    position: relative;
+    z-index: 0;
 }
 
 img {
@@ -224,9 +226,42 @@ nav.nav-desktop a.active {
 }
 
 /* ---- section shell (トップの各セクション共通) ---- */
-main{
-    background: var(--paper) url("../img/bg-top.png") no-repeat top right;
+/* main{
+    background: var(--paper) url("../img/ウェーブ１.avi") no-repeat top right;
     background-size: 50%;
+} */
+
+main {}
+
+.bg-video {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: auto;
+    z-index: 0;
+    object-fit: cover;
+}
+
+.bg-video-btm {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50%;
+    height: auto;
+    z-index: -0.5;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.bg-video-btm.visible {
+    opacity: 1;
+}
+
+.main-content {
+    position: relative;
+    z-index: 2;
 }
 
 section {

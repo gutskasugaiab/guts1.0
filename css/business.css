@@ -5,14 +5,12 @@
 .biz-index-grid {
     display: grid;
     gap: 6rem;
-    background: var(--paper);
 }
 
 .biz-row{
     display:grid;
     grid-template-columns:2fr 3fr;
     gap: 0.1rem;
-    background: var(--line);
 }
 
 .biz-row.reverse{
@@ -20,16 +18,13 @@
 }
 
 .biz-index-card {
-    background: var(--paper);
     padding: 5.6rem 4rem;
     display: flex;
     flex-direction: column;
-    transition: background .35s;
 }
 
 .biz-index-image{
     overflow: hidden;
-    background: var(--paper);
 }
 
 .biz-index-image img{

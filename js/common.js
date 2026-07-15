@@ -115,9 +115,11 @@ fadeUps.forEach((fadeUp) => {
 
 const loader = document.getElementById('loader');
 const loaderVideo = document.getElementById('loaderVideo');
+const fadeImage = document.getElementById('fadeImage');
+const fadeGif = document.getElementById('fadeGif');
 
 if (loader && loaderVideo) {
-  const fadeBeforeEnd = 0.5; // 終了の何秒前からフェードアウトを始めるか
+  const fadeBeforeEnd = 1;
 
   loaderVideo.addEventListener('loadedmetadata', () => {
     const duration = loaderVideo.duration;
@@ -131,8 +133,44 @@ if (loader && loaderVideo) {
     });
   });
 
-  // 保険: メタデータ取得に失敗した場合は6秒後に強制フェードアウト
   setTimeout(() => {
     loader.classList.add('loaded');
   }, 6000);
+
+  // ローダーが消え始めた瞬間を検知して、画像とGIFをそれぞれのタイミングで出す
+  const observer = new MutationObserver(() => {
+    if (loader.classList.contains('loaded')) {
+      if (fadeImage) {
+        setTimeout(() => {
+          fadeImage.classList.add('visible');
+        }, 900); // 画像を出すタイミング
+      }
+
+      if (fadeGif) {
+        setTimeout(() => {
+          fadeGif.classList.add('visible');
+        }, 400); // GIFを出すタイミング(画像より少し後、でも完了より前)
+      }
+
+      observer.disconnect();
+    }
+  });
+
+  observer.observe(loader, { attributes: true, attributeFilter: ['class'] });
+}
+
+const bgVideoBtm = document.getElementById('bgVideoBtm');
+
+if (bgVideoBtm) {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        bgVideoBtm.classList.add('visible');
+        bgVideoBtm.play();
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  observer.observe(bgVideoBtm);
 }
