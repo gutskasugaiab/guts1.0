@@ -22,13 +22,15 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 0.1rem;
-    background: var(--line);
     margin: 2rem 0 5rem;
 }
 
 .feature-card {
-    background: var(--paper);
     padding: 3.8rem 3rem;
+     transition: filter 0.3s ease;
+}
+.feature-card:hover {
+    filter: brightness(1.2);
 }
 
 .feature-card b {

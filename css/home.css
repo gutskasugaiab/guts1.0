@@ -97,6 +97,7 @@
 
 /* GIF:小さい状態からぼやぁ→スン */
 .blur-fade-gif {
+    width: 100%;
     opacity: 0;
     filter: blur(16px);
     transform: scale(0.7);

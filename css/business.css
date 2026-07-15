@@ -37,10 +37,12 @@
 .biz-index-card,
 .biz-index-image{
     min-height:36rem;
+    padding: 3.8rem 3rem;
+    transition: filter 0.3s ease;
 }
 
 .biz-index-card:hover {
-    background: var(--iron);
+    filter: brightness(1.5);
 }
 
 .biz-index-card .num {
