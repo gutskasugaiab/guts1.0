@@ -32,7 +32,7 @@ html {
     --ember: #d17b7f;
     --bone: #f2ede4;
     --paper: #000;
-    --smoke: #8f877a;
+    --smoke: #c6c4c2;
     --line: rgba(242, 237, 228, .09);
 }
 
@@ -343,8 +343,16 @@ section {
     margin: 6rem 0 2.2rem;
 }
 
+
 .content h2:first-child {
     margin-top: 0;
+}
+
+.content h3 {
+    font-family: "Shippori Mincho", serif;
+    color: var(--smoke);
+    font-size: clamp(2.56rem, 1.5vw, 3.52rem);
+    margin: 0 0 2.2rem;
 }
 
 .content p {
@@ -518,6 +526,57 @@ footer {
     display: none;
 }
 
+/* 右下固定 */
+.fixed-cta {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    position: fixed;
+    z-index: 50;
+    transition: bottom 0.3s ease;
+    left: auto;
+    /* ←これ重要（中央防止） */
+    transform: none;
+    animation: fadeInUp 0.8s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.btn-cta {
+    padding: 0.5rem 1rem;
+    text-align: center;
+    font-size: 1rem;
+}
+
+/* さぽえるボックス */
+.sapo-box {
+    padding: 1rem;
+    border-radius: 1rem;
+    text-align: center;
+}
+
+/* さぽえる画像 */
+.sapo-box img {
+    width: 10rem;
+    height: auto;
+    display: block;
+}
+
 @media (prefers-reduced-motion:reduce) {
     .reveal {
         transition: none;
@@ -564,4 +623,5 @@ footer {
     .sp-br {
         display: block;
     }
+
 }
