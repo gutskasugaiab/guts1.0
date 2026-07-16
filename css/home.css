@@ -87,6 +87,7 @@
     filter: blur(16px);
     transform: translateY(40px) scale(1.03);
     transition: opacity 1.6s ease, filter 1.6s ease, transform 1.6s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
 }
 
 .blur-fade-image.visible {
@@ -102,6 +103,7 @@
     filter: blur(16px);
     transform: scale(0.7);
     transition: opacity 1.6s ease, filter 1.6s ease, transform 1.6s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
 }
 
 .blur-fade-gif.visible {
