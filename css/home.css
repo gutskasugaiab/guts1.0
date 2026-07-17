@@ -314,9 +314,10 @@
     font-size: 1.056rem;
     letter-spacing: .1em;
     text-transform: uppercase;
-    border: 1px solid var(--line);
+    border: 2px solid var(--blood);
     color: var(--smoke);
     padding: 0.6rem 1.2rem;
+    border-radius: 999px;
 }
 
 /* ---- overview section（会社概要の抜粋） ---- */
