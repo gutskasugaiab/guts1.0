@@ -25,7 +25,7 @@
     '<video class="logo-video" id="afterVideo" muted playsinline>' +
     '<source src="img/logo.mp4" type="video/mp4">' +
     '</video>' +
-    '<img class="logo-image" id="afterVideoImage" src="img/logo-top.png" alt="GUTS1.0">' +
+    '<img class="logo-image" id="afterVideoImage" src="img/logo.png" alt="GUTS1.0">' +
     '</a>\n' +
     '  <nav class="nav-desktop">\n      ' + navHTML() + '\n  </nav>\n' +
     '  <button class="nav-toggle" aria-label="メニューを開く" aria-expanded="false">\n' +
@@ -123,12 +123,38 @@ const loaderVideo = document.getElementById('loaderVideo');
 const fadeImage = document.getElementById('fadeImage');
 const fadeGif = document.getElementById('fadeGif');
 
+// 「このページ表示がリロード(更新)によるものか」を判定する。
+// 別ページからの遷移や初回アクセスは false になり、演出が発火する。
+// F5やCtrl+R、ブラウザの更新ボタンでの再読み込みだけ true になる。
+function isPageReload() {
+  try {
+    const entries = performance.getEntriesByType('navigation');
+    if (entries.length > 0) {
+      return entries[0].type === 'reload';
+    }
+    // 古いブラウザ向けフォールバック
+    if (performance.navigation) {
+      return performance.navigation.type === 1;
+    }
+  } catch (e) {}
+  return false;
+}
+
+const hasPlayedIntro = isPageReload();
+
 // afterVideoはヘッダー注入(inject)で後から作られる要素のため、都度取得する。
-// ローディングエフェクトの有無に関わらず、ヘッダーが挿入され次第すぐに再生する。
 function setupAfterVideo() {
   const afterVideo = document.getElementById('afterVideo');
   const afterVideoImage = document.getElementById('afterVideoImage');
   if (!afterVideo) return;
+
+  if (hasPlayedIntro) {
+    // リロード時は動画を再生せず、最初から静止画を表示した状態にする
+    if (afterVideoImage) {
+      afterVideoImage.classList.add('visible');
+    }
+    return;
+  }
 
   afterVideo.classList.add('visible');
   afterVideo.play();
@@ -143,48 +169,57 @@ function setupAfterVideo() {
 }
 
 if (loader && loaderVideo) {
-  const fadeBeforeEnd = 1;
+  if (hasPlayedIntro) {
+    // リロード時は、ローダーをアニメーションなしで即座に消す
+    loader.style.transition = 'none';
+    loader.classList.add('loaded');
+    setupAfterVideo();
+    if (fadeImage) fadeImage.classList.add('visible');
+    if (fadeGif) fadeGif.classList.add('visible');
+  } else {
+    const fadeBeforeEnd = 1;
 
-  loaderVideo.addEventListener('loadedmetadata', () => {
-    const duration = loaderVideo.duration;
-    const fadeStartTime = Math.max(0, duration - fadeBeforeEnd);
+    loaderVideo.addEventListener('loadedmetadata', () => {
+      const duration = loaderVideo.duration;
+      const fadeStartTime = Math.max(0, duration - fadeBeforeEnd);
 
-    loaderVideo.addEventListener('timeupdate', function checkTime() {
-      if (loaderVideo.currentTime >= fadeStartTime) {
-        loader.classList.add('loaded');
-        loaderVideo.removeEventListener('timeupdate', checkTime);
+      loaderVideo.addEventListener('timeupdate', function checkTime() {
+        if (loaderVideo.currentTime >= fadeStartTime) {
+          loader.classList.add('loaded');
+          loaderVideo.removeEventListener('timeupdate', checkTime);
+        }
+      });
+    });
+
+    setTimeout(() => {
+      loader.classList.add('loaded');
+    }, 6000);
+
+    // ローダーが消え始めた瞬間を検知して、画像・GIF・動画をそれぞれのタイミングで出す
+    const loaderObserver = new MutationObserver(() => {
+      if (loader.classList.contains('loaded')) {
+        if (fadeImage) {
+          setTimeout(() => {
+            fadeImage.classList.add('visible');
+          }, 900); // 画像を出すタイミング
+        }
+
+        if (fadeGif) {
+          setTimeout(() => {
+            fadeGif.classList.add('visible');
+          }, 400); // GIFを出すタイミング
+        }
+
+        setTimeout(setupAfterVideo, 200); // 動画を出すタイミング
+
+        loaderObserver.disconnect();
       }
     });
-  });
 
-  setTimeout(() => {
-    loader.classList.add('loaded');
-  }, 6000);
-
-  // ローダーが消え始めた瞬間を検知して、画像・GIF・動画をそれぞれのタイミングで出す
-  const loaderObserver = new MutationObserver(() => {
-    if (loader.classList.contains('loaded')) {
-      if (fadeImage) {
-        setTimeout(() => {
-          fadeImage.classList.add('visible');
-        }, 900); // 画像を出すタイミング
-      }
-
-      if (fadeGif) {
-        setTimeout(() => {
-          fadeGif.classList.add('visible');
-        }, 400); // GIFを出すタイミング
-      }
-
-      setTimeout(setupAfterVideo, 200); // 動画を出すタイミング
-
-      loaderObserver.disconnect();
-    }
-  });
-
-  loaderObserver.observe(loader, { attributes: true, attributeFilter: ['class'] });
+    loaderObserver.observe(loader, { attributes: true, attributeFilter: ['class'] });
+  }
 } else {
-  // ローディングエフェクトがないページでは、ヘッダー挿入(inject)完了後に再生する
+  // ローディングエフェクトがないページ
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', setupAfterVideo);
   } else {
