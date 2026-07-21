@@ -16,245 +16,754 @@
 
   function navHTML() {
     return navLinks.map(function (l) {
-      return '<a href="' + l.href + '"' + isActive(l.href) + '>' + l.label + '</a>';
+      return '<a href="' + l.href + '"' + isActive(l.href) + '>' +
+        l.label +
+        '</a>';
     }).join('\n      ');
   }
+
+
+  /* =========================================
+     HEADER HTML
+  ========================================= */
 
   var headerHTML =
     '<a class="logo-mark" href="index.html">' +
     '<video class="logo-video" id="afterVideo" muted playsinline>' +
     '<source src="img/logo.mp4" type="video/mp4">' +
     '</video>' +
-    '<img class="logo-image" id="afterVideoImage" src="img/logo.png" alt="GUTS1.0">' +
+    '<img class="logo-image" id="afterVideoImage" src="img/logo-top.png" alt="GUTS1.0">' +
     '</a>\n' +
-    '  <nav class="nav-desktop">\n      ' + navHTML() + '\n  </nav>\n' +
-    '  <button class="nav-toggle" aria-label="メニューを開く" aria-expanded="false">\n' +
-    '    <span></span><span></span><span></span>\n' +
-    '  </button>';
+
+    '<nav class="nav-desktop">\n' +
+    '  ' + navHTML() + '\n' +
+    '</nav>\n' +
+
+    '<button class="nav-toggle" aria-label="メニューを開く" aria-expanded="false">' +
+    '<span></span>' +
+    '<span></span>' +
+    '<span></span>' +
+    '</button>';
+
+
+  /* =========================================
+     MOBILE NAV HTML
+  ========================================= */
 
   var mobileNavHTML =
-    '<div class="nav-mobile" id="site-nav-mobile">\n' +
-    '  <nav>\n      ' + navHTML() + '\n  </nav>\n' +
+    '<div class="nav-mobile" id="site-nav-mobile">' +
+    '<nav>' +
+    navHTML() +
+    '</nav>' +
     '</div>';
 
-  var footerHTML =
-    '<div>\n' +
-    '    <a class="foot-brand" href="index.html"><img src="img/logo.png" alt="GUTS1.0"></a>\n' +
-    '  </div>\n' +
-    '  <div class="foot-links">\n      ' + navHTML() + '\n' +
-    '    <a href="privacy.html">プライバシーポリシー</a>\n' +
-    '    <a href="tokushoho.html">特定商取引法に基づく表記</a>\n' +
-    '  </div>\n' +
-    '  <div class="foot-copy">© 2026 GUTS1.0 株式会社. All Rights Reserved.</div>';
 
-  function setupMobileNav(toggle, mobileNav) {
+  /* =========================================
+     FOOTER HTML
+  ========================================= */
+
+  var footerHTML =
+    '<div>' +
+    '<a class="foot-brand" href="index.html">' +
+    '<img src="img/logo.png" alt="GUTS1.0">' +
+    '</a>' +
+    '</div>' +
+
+    '<div class="foot-links">' +
+    navHTML() +
+    '<a href="privacy.html">プライバシーポリシー</a>' +
+    '<a href="tokushoho.html">特定商取引法に基づく表記</a>' +
+    '</div>' +
+
+    '<div class="foot-copy">' +
+    '© 2026 GUTS1.0 株式会社. All Rights Reserved.' +
+    '</div>';
+
+
+  /* =========================================
+     MOBILE NAV 開閉
+  ========================================= */
+
+  function setupMobileNav(toggle, mobileNav, headerBg) {
+
     if (!toggle || !mobileNav) return;
 
+
+    /* 閉じる */
     function close() {
+
       mobileNav.classList.remove('open');
+
       toggle.classList.remove('open');
-      toggle.setAttribute('aria-expanded', 'false');
+
+      toggle.setAttribute(
+        'aria-expanded',
+        'false'
+      );
+
+      toggle.setAttribute(
+        'aria-label',
+        'メニューを開く'
+      );
+
+      /* 背景ページのスクロールを解除 */
       document.body.style.overflow = '';
-    }
-    function open() {
-      mobileNav.classList.add('open');
-      toggle.classList.add('open');
-      toggle.setAttribute('aria-expanded', 'true');
-      document.body.style.overflow = 'hidden';
+
+      /* ヘッダー背景を通常状態へ */
+      if (headerBg) {
+        headerBg.classList.remove('open');
+      }
     }
 
+
+    /* 開く */
+    function open() {
+
+      mobileNav.classList.add('open');
+
+      toggle.classList.add('open');
+
+      toggle.setAttribute(
+        'aria-expanded',
+        'true'
+      );
+
+      toggle.setAttribute(
+        'aria-label',
+        'メニューを閉じる'
+      );
+
+      /* 背景ページをスクロールさせない */
+      document.body.style.overflow = 'hidden';
+
+      /* ヘッダー背景を黒にする */
+      if (headerBg) {
+        headerBg.classList.add('open');
+      }
+    }
+
+
+    /* ハンバーガークリック */
     toggle.addEventListener('click', function () {
-      if (mobileNav.classList.contains('open')) close(); else open();
+
+      if (mobileNav.classList.contains('open')) {
+        close();
+      } else {
+        open();
+      }
+
     });
+
+
+    /* ナビリンクをクリックしたら閉じる */
     mobileNav.querySelectorAll('a').forEach(function (a) {
-      a.addEventListener('click', close);
+
+      a.addEventListener('click', function () {
+        close();
+      });
+
     });
+
   }
+
+
+  /* =========================================
+     HEADER / NAV / FOOTER INJECT
+  ========================================= */
 
   function inject() {
-    var headerEl = document.getElementById('site-header');
-    var footerEl = document.getElementById('site-footer');
+
+    var headerEl =
+      document.getElementById('site-header');
+
+    var footerEl =
+      document.getElementById('site-footer');
+
+
+    /* -----------------------------------------
+       HEADER
+    ----------------------------------------- */
+
     if (headerEl) {
+
       headerEl.innerHTML = headerHTML;
-      // backdrop-filterがかかったheader内に position:fixed の全画面メニューを置くと
-      // headerの箱を基準にしてしまい高さが崩れるため、body直下に切り離す
-      var wrapper = document.createElement('div');
-      wrapper.innerHTML = mobileNavHTML;
-      var mobileNav = wrapper.firstElementChild;
-      document.body.appendChild(mobileNav);
 
-      var toggle = headerEl.querySelector('.nav-toggle');
-      setupMobileNav(toggle, mobileNav);
+
+      /*
+       * ヘッダー背景専用レイヤー
+       *
+       * body直下に配置することで、
+       * headerのスタッキングコンテキストに
+       * 影響されないようにする
+       */
+
+      var headerBg =
+        document.createElement('div');
+
+      headerBg.className =
+        'header-bg-layer';
+
+      document.body.appendChild(
+        headerBg
+      );
+
+
+      /*
+       * モバイルナビ
+       *
+       * headerの外、
+       * body直下に配置
+       */
+
+      var wrapper =
+        document.createElement('div');
+
+      wrapper.innerHTML =
+        mobileNavHTML;
+
+      var mobileNav =
+        wrapper.firstElementChild;
+
+      document.body.appendChild(
+        mobileNav
+      );
+
+
+      /*
+       * ハンバーガーボタン取得
+       */
+
+      var toggle =
+        headerEl.querySelector(
+          '.nav-toggle'
+        );
+
+
+      /*
+       * モバイルナビ開閉設定
+       */
+
+      setupMobileNav(
+        toggle,
+        mobileNav,
+        headerBg
+      );
+
     }
-    if (footerEl) footerEl.innerHTML = footerHTML;
+
+
+    /* -----------------------------------------
+       FOOTER
+    ----------------------------------------- */
+
+    if (footerEl) {
+
+      footerEl.innerHTML =
+        footerHTML;
+
+    }
+
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', inject);
+
+  /* =========================================
+     DOM READY
+  ========================================= */
+
+  if (
+    document.readyState === 'loading'
+  ) {
+
+    document.addEventListener(
+      'DOMContentLoaded',
+      inject
+    );
+
   } else {
+
     inject();
+
   }
+
 })();
 
-const fadeUps = document.querySelectorAll('.fade-up');
 
-const fadeUpObserver = new IntersectionObserver((entries) => {
 
-  entries.forEach((entry) => {
+/* ===================================================
+   FADE UP
+=================================================== */
 
-    if (entry.isIntersecting) {
+const fadeUps =
+  document.querySelectorAll('.fade-up');
 
-      entry.target.classList.add('show');
+const fadeUpObserver =
+  new IntersectionObserver(
+    (entries) => {
 
+      entries.forEach(
+        (entry) => {
+
+          if (entry.isIntersecting) {
+
+            entry.target.classList.add(
+              'show'
+            );
+
+          }
+
+        }
+      );
+
+    },
+    {
+      threshold: 0.2
     }
+  );
 
-  });
+fadeUps.forEach(
+  (fadeUp) => {
 
-}, {
-  threshold: 0.2
-});
+    fadeUpObserver.observe(
+      fadeUp
+    );
 
-fadeUps.forEach((fadeUp) => {
-  fadeUpObserver.observe(fadeUp);
-});
+  }
+);
 
-const loader = document.getElementById('loader');
-const loaderVideo = document.getElementById('loaderVideo');
-const fadeImage = document.getElementById('fadeImage');
-const fadeGif = document.getElementById('fadeGif');
 
-// 「このページ表示がリロード(更新)によるものか」を判定する。
-// 別ページからの遷移や初回アクセスは false になり、演出が発火する。
-// F5やCtrl+R、ブラウザの更新ボタンでの再読み込みだけ true になる。
+
+/* ===================================================
+   LOADER
+=================================================== */
+
+const loader =
+  document.getElementById('loader');
+
+const loaderVideo =
+  document.getElementById('loaderVideo');
+
+const fadeImage =
+  document.getElementById('fadeImage');
+
+const fadeGif =
+  document.getElementById('fadeGif');
+
+
+
+/* ===================================================
+   PAGE RELOAD CHECK
+=================================================== */
+
 function isPageReload() {
+
   try {
-    const entries = performance.getEntriesByType('navigation');
-    if (entries.length > 0) {
-      return entries[0].type === 'reload';
+
+    const entries =
+      performance.getEntriesByType(
+        'navigation'
+      );
+
+    if (
+      entries.length > 0
+    ) {
+
+      return (
+        entries[0].type === 'reload'
+      );
+
     }
-    // 古いブラウザ向けフォールバック
-    if (performance.navigation) {
-      return performance.navigation.type === 1;
+
+    if (
+      performance.navigation
+    ) {
+
+      return (
+        performance.navigation.type === 1
+      );
+
     }
-  } catch (e) {}
+
+  } catch (e) { }
+
   return false;
+
 }
 
-const hasPlayedIntro = isPageReload();
 
-// afterVideoはヘッダー注入(inject)で後から作られる要素のため、都度取得する。
+const hasPlayedIntro =
+  isPageReload();
+
+
+
+/* ===================================================
+   HEADER LOGO VIDEO
+=================================================== */
+
 function setupAfterVideo() {
-  const afterVideo = document.getElementById('afterVideo');
-  const afterVideoImage = document.getElementById('afterVideoImage');
+
+  const afterVideo =
+    document.getElementById(
+      'afterVideo'
+    );
+
+  const afterVideoImage =
+    document.getElementById(
+      'afterVideoImage'
+    );
+
+
   if (!afterVideo) return;
 
+
+  /* リロード時 */
   if (hasPlayedIntro) {
-    // リロード時は動画を再生せず、最初から静止画を表示した状態にする
+
     if (afterVideoImage) {
-      afterVideoImage.classList.add('visible');
+
+      afterVideoImage.classList.add(
+        'visible'
+      );
+
     }
+
     return;
+
   }
 
-  afterVideo.classList.add('visible');
+
+  /* 初回アクセス */
+  afterVideo.classList.add(
+    'visible'
+  );
+
   afterVideo.play();
 
-  // 動画の再生が終わったら、動画を隠して画像に切り替える
-  afterVideo.addEventListener('ended', () => {
-    afterVideo.classList.remove('visible');
-    if (afterVideoImage) {
-      afterVideoImage.classList.add('visible');
+
+  /* 動画終了後に画像へ */
+  afterVideo.addEventListener(
+    'ended',
+    () => {
+
+      afterVideo.classList.remove(
+        'visible'
+      );
+
+      if (afterVideoImage) {
+
+        afterVideoImage.classList.add(
+          'visible'
+        );
+
+      }
+
+    },
+    {
+      once: true
     }
-  }, { once: true });
+  );
+
 }
 
-if (loader && loaderVideo) {
-  if (hasPlayedIntro) {
-    // リロード時は、ローダーをアニメーションなしで即座に消す
-    loader.style.transition = 'none';
-    loader.classList.add('loaded');
-    setupAfterVideo();
-    if (fadeImage) fadeImage.classList.add('visible');
-    if (fadeGif) fadeGif.classList.add('visible');
+
+
+function runSetupAfterVideo() {
+
+  if (
+    document.readyState ===
+    'loading'
+  ) {
+
+    document.addEventListener(
+      'DOMContentLoaded',
+      setupAfterVideo,
+      {
+        once: true
+      }
+    );
+
   } else {
+
+    setupAfterVideo();
+
+  }
+
+}
+
+
+
+/* ===================================================
+   LOADER EFFECT
+=================================================== */
+
+if (
+  loader &&
+  loaderVideo
+) {
+
+  if (hasPlayedIntro) {
+
+    loader.style.transition =
+      'none';
+
+    loader.classList.add(
+      'loaded'
+    );
+
+    runSetupAfterVideo();
+
+    if (fadeImage) {
+
+      fadeImage.classList.add(
+        'visible'
+      );
+
+    }
+
+    if (fadeGif) {
+
+      fadeGif.classList.add(
+        'visible'
+      );
+
+    }
+
+  } else {
+
     const fadeBeforeEnd = 1;
 
-    loaderVideo.addEventListener('loadedmetadata', () => {
-      const duration = loaderVideo.duration;
-      const fadeStartTime = Math.max(0, duration - fadeBeforeEnd);
 
-      loaderVideo.addEventListener('timeupdate', function checkTime() {
-        if (loaderVideo.currentTime >= fadeStartTime) {
-          loader.classList.add('loaded');
-          loaderVideo.removeEventListener('timeupdate', checkTime);
-        }
-      });
-    });
+    loaderVideo.addEventListener(
+      'loadedmetadata',
+      () => {
 
-    setTimeout(() => {
-      loader.classList.add('loaded');
-    }, 6000);
+        const duration =
+          loaderVideo.duration;
 
-    // ローダーが消え始めた瞬間を検知して、画像・GIF・動画をそれぞれのタイミングで出す
-    const loaderObserver = new MutationObserver(() => {
-      if (loader.classList.contains('loaded')) {
-        if (fadeImage) {
-          setTimeout(() => {
-            fadeImage.classList.add('visible');
-          }, 900); // 画像を出すタイミング
-        }
+        const fadeStartTime =
+          Math.max(
+            0,
+            duration - fadeBeforeEnd
+          );
 
-        if (fadeGif) {
-          setTimeout(() => {
-            fadeGif.classList.add('visible');
-          }, 400); // GIFを出すタイミング
-        }
 
-        setTimeout(setupAfterVideo, 200); // 動画を出すタイミング
+        loaderVideo.addEventListener(
+          'timeupdate',
+          function checkTime() {
 
-        loaderObserver.disconnect();
+            if (
+              loaderVideo.currentTime >=
+              fadeStartTime
+            ) {
+
+              loader.classList.add(
+                'loaded'
+              );
+
+              loaderVideo.removeEventListener(
+                'timeupdate',
+                checkTime
+              );
+
+            }
+
+          }
+        );
+
       }
-    });
+    );
 
-    loaderObserver.observe(loader, { attributes: true, attributeFilter: ['class'] });
+
+    /* 6秒後の保険 */
+    setTimeout(
+      () => {
+
+        loader.classList.add(
+          'loaded'
+        );
+
+      },
+      6000
+    );
+
+
+    /* ローダー終了監視 */
+    const loaderObserver =
+      new MutationObserver(
+        () => {
+
+          if (
+            loader.classList.contains(
+              'loaded'
+            )
+          ) {
+
+            if (fadeImage) {
+
+              setTimeout(
+                () => {
+
+                  fadeImage.classList.add(
+                    'visible'
+                  );
+
+                },
+                900
+              );
+
+            }
+
+
+            if (fadeGif) {
+
+              setTimeout(
+                () => {
+
+                  fadeGif.classList.add(
+                    'visible'
+                  );
+
+                },
+                400
+              );
+
+            }
+
+
+            setTimeout(
+              runSetupAfterVideo,
+              200
+            );
+
+
+            loaderObserver.disconnect();
+
+          }
+
+        }
+      );
+
+
+    loaderObserver.observe(
+      loader,
+      {
+        attributes: true,
+        attributeFilter: ['class']
+      }
+    );
+
   }
+
 } else {
-  // ローディングエフェクトがないページ
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', setupAfterVideo);
-  } else {
-    setupAfterVideo();
-  }
+
+  runSetupAfterVideo();
+
 }
 
-const bgVideoBtm = document.getElementById('bgVideoBtm');
+
+
+/* ===================================================
+   BOTTOM BACKGROUND VIDEO
+=================================================== */
+
+const bgVideoBtm =
+  document.getElementById(
+    'bgVideoBtm'
+  );
 
 if (bgVideoBtm) {
-  const bgVideoObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        bgVideoBtm.classList.add('visible');
-        bgVideoBtm.play();
-        bgVideoObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.3 });
 
-  bgVideoObserver.observe(bgVideoBtm);
+  const bgVideoObserver =
+    new IntersectionObserver(
+      (entries) => {
+
+        entries.forEach(
+          entry => {
+
+            if (
+              entry.isIntersecting
+            ) {
+
+              bgVideoBtm.classList.add(
+                'visible'
+              );
+
+              bgVideoBtm.play();
+
+              bgVideoObserver.unobserve(
+                entry.target
+              );
+
+            }
+
+          }
+        );
+
+      },
+      {
+        threshold: 0.3
+      }
+    );
+
+
+  bgVideoObserver.observe(
+    bgVideoBtm
+  );
+
 }
 
-const fixedCta = document.querySelector('.fixed-cta');
-const footer = document.querySelector('.footer');
 
-if (fixedCta && footer) {
-  window.addEventListener('scroll', () => {
-    const footerRect = footer.getBoundingClientRect();
-    const windowHeight = window.innerHeight;
 
-    if (footerRect.top < windowHeight) {
-      fixedCta.style.bottom = (windowHeight - footerRect.top + 20) + "px";
-    } else {
-      fixedCta.style.bottom = "20px";
+/* ===================================================
+   FIXED CTA
+=================================================== */
+
+const fixedCta =
+  document.querySelector(
+    '.fixed-cta'
+  );
+
+const footer =
+  document.querySelector(
+    '.footer'
+  );
+
+
+if (
+  fixedCta &&
+  footer
+) {
+
+  window.addEventListener(
+    'scroll',
+    () => {
+
+      const footerRect =
+        footer.getBoundingClientRect();
+
+      const windowHeight =
+        window.innerHeight;
+
+
+      if (
+        footerRect.top <
+        windowHeight
+      ) {
+
+        fixedCta.style.bottom =
+          (
+            windowHeight -
+            footerRect.top +
+            20
+          ) + 'px';
+
+      } else {
+
+        fixedCta.style.bottom =
+          '20px';
+
+      }
+
     }
-  });
+  );
+
 }
