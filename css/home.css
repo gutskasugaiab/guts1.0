@@ -229,62 +229,51 @@
 
 /* ---- business cards（3事業） ---- */
 .business {
-    background: var(--paper);
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
+   width: 100%;
 }
 
 .biz-grid {
     display: grid;
-    gap: 6rem;
-    background: var(--paper);
+    gap: 3rem;
 }
 
 .biz-row {
-  display: grid;
-  grid-template-columns: 2fr 3fr;
-  gap: 0.1rem;
-  background: var(--line);
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    gap: 0.1rem;
+    align-items: center;
 }
+
 @media (max-width:500px) {
-  .biz-row {
-    grid-template-columns: 1fr;
-  }
+    .biz-row {
+        grid-template-columns: 1fr;
+    }
 }
 
 .biz-row.reverse {
     grid-template-columns: 3fr 2fr;
-}
-@media (max-width:860px) {
-.biz-row.reverse {
-    grid-template-columns: 1fr;
-    }
-.biz-row.reverse .biz-image {
-  order: 1;
-  }
-.biz-row.reverse .biz-card {
-  order: 2;
-  }
+    align-items: center;
 }
 
-.biz-card,
-.biz-image {
-  min-height: 36rem;
+@media (max-width:500px) {
+    .biz-row.reverse {
+        grid-template-columns: 1fr;
+    }
+
+    .biz-row.reverse .biz-image {
+        order: 1;
+    }
+
+    .biz-row.reverse .biz-card {
+        order: 2;
+    }
 }
-@media (max-width:860px) {
-.biz-card, .biz-image {
-    min-height: 0;
-  }
-}
+
 .biz-image {
     overflow: hidden;
-    background: var(--paper);
-}
-@media (max-width:860px) {
-  .biz-image {
     aspect-ratio: 16 / 9;
-  }
 }
+
 
 .biz-image img {
     width: 100%;
@@ -292,22 +281,23 @@
     object-fit: cover;
     display: block;
 }
-    
+
 .biz-card {
     background: var(--paper);
-    padding: 6.4rem 4.6rem;
+    padding: 0 2rem;
     position: relative;
     transition: background .35s;
     display: block;
 }
-@media (max-width:860px) {
-  .biz-card {
-    padding: 0;
-  }
+
+@media (max-width:500px) {
+    .biz-card {
+        padding: 0;
+    }
 }
 
 .biz-card:hover {
-    background: var(--iron);
+    filter: brightness(1.5);
 }
 
 .biz-num {
@@ -390,11 +380,5 @@
 
     .g-u-t-s {
         grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width:1080px) {
-    .biz-grid {
-        grid-template-columns: 1fr;
     }
 }
