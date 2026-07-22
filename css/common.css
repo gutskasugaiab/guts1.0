@@ -407,7 +407,7 @@ section {
 
 /* ---- content blocks（下層ページ本文共通） ---- */
 .content {
-    padding: 10rem 6vw;
+    padding: 3rem 6vw;
 }
 
 .content-narrow {

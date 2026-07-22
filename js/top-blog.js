@@ -26,6 +26,8 @@ fetch('blog.json')
         + '</a>';
     });
     grid.innerHTML = html;
+
+    if (window.observeFadeUps) window.observeFadeUps(grid);
   })
   .catch(function (err) {
     console.error('blog.json の読み込みに失敗しました:', err);

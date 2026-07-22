@@ -21,6 +21,8 @@ fetch('news.json')
         + '</a>';
     });
     list.innerHTML = html;
+
+    if (window.observeFadeUps) window.observeFadeUps(list);
   })
   .catch(function (err) {
     console.error('news.json の読み込みに失敗しました:', err);

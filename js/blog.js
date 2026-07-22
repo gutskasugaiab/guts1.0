@@ -87,6 +87,8 @@ function renderGrid(posts) {
       + '</a>';
   });
   grid.innerHTML = html;
+
+  if (window.observeFadeUps) window.observeFadeUps(grid);
 }
 
 function renderPagination(totalPages) {
