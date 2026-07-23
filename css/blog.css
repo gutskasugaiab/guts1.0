@@ -7,10 +7,10 @@
 
 .filter-btn {
   font-family: 'Noto Sans JP', sans-serif;
-  font-size: 0.78rem;
+  font-size: 1rem;
   letter-spacing: 0.08em;
   padding: 0.5rem 1.25rem;
-  border: 1px solid var(--line, rgba(255,255,255,.2));
+  border: 1px solid var(--line, rgba(255, 255, 255, .2));
   background: transparent;
   color: inherit;
   cursor: pointer;
@@ -35,18 +35,22 @@
 }
 
 @media (max-width: 900px) {
-  .blog-grid { grid-template-columns: repeat(2, 1fr); }
+  .blog-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 600px) {
-  .blog-grid { grid-template-columns: 1fr; }
+  .blog-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .blog-card {
   display: block;
   text-decoration: none;
   color: inherit;
-  border: 1px solid var(--line, rgba(255,255,255,.15));
+  border: 1px solid var(--line, rgba(255, 255, 255, .15));
   transition: border-color .3s ease, transform .3s ease;
 }
 
@@ -57,7 +61,7 @@
 
 .blog-card-image {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  object-fit: contain;
   overflow: hidden;
   background: #111;
 }
@@ -80,31 +84,31 @@
 
 .blog-card-body .tag {
   display: inline-block;
-  font-size: 0.68rem;
+  font-size: 1rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--ember, #ff7a3d);
-  border: 1px solid rgba(255,122,61,.4);
+  border: 1px solid rgba(255, 122, 61, .4);
   padding: 3px 10px;
   margin-bottom: 0.75rem;
 }
 
 .blog-card-body time {
   display: block;
-  font-size: 0.75rem;
+  font-size: 1.2rem;
   opacity: 0.6;
   margin-bottom: 0.5rem;
 }
 
 .blog-card-body h3 {
   font-family: 'Shippori Mincho', serif;
-  font-size: 1.05rem;
+  font-size: 1.68rem;
   line-height: 1.5;
   margin: 0 0 0.75rem;
 }
 
 .blog-card-body p {
-  font-size: 0.85rem;
+  font-size: 1.36rem;
   line-height: 1.7;
   opacity: 0.75;
 }
@@ -126,11 +130,11 @@
 
 .page-btn {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 0.9rem;
+  font-size: 1.44rem;
   min-width: 2.4rem;
   height: 2.4rem;
   padding: 0 0.6rem;
-  border: 1px solid var(--line, rgba(255,255,255,.2));
+  border: 1px solid var(--line, rgba(255, 255, 255, .2));
   background: transparent;
   color: inherit;
   cursor: pointer;
@@ -165,7 +169,7 @@
 }
 
 .blog-detail-meta time {
-  font-size: 0.85rem;
+  font-size: 1.36rem;
   opacity: 0.6;
 }
 

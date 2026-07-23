@@ -13,7 +13,7 @@ fetch('news.json')
     var html = '';
     posts.forEach(function (post) {
       html += ''
-        + '<a class="news-item fade-up" href="news-detail.html?id=' + post.id + '">'
+        + '<a class="news-item" href="news-detail.html?id=' + post.id + '">'
         + '<time>' + post.date + '</time>'
         + '<span class="tag">' + post.tag + '</span>'
         + '<p>' + post.title + '</p>'
@@ -27,25 +27,3 @@ fetch('news.json')
   .catch(function (err) {
     console.error('news.json の読み込みに失敗しました:', err);
   });
-
-const fadeUps = document.querySelectorAll('.fade-up');
-
-const fadeUpObserver = new IntersectionObserver((entries) => {
-
-  entries.forEach((entry) => {
-
-    if (entry.isIntersecting) {
-
-      entry.target.classList.add('show');
-
-    }
-
-  });
-
-}, {
-  threshold: 0.2
-});
-
-fadeUps.forEach((fadeUp) => {
-  fadeUpObserver.observe(fadeUp);
-});

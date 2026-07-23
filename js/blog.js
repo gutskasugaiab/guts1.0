@@ -74,7 +74,7 @@ function renderGrid(posts) {
   var html = '';
   posts.forEach(function (post) {
     html += ''
-      + '<a class="blog-card fade-up" href="blog-detail.html?id=' + post.id + '">'
+      + '<a class="blog-card" href="blog-detail.html?id=' + post.id + '">'
       + '<div class="blog-card-image">'
       + '<img src="' + post.eyecatch + '" alt="' + post.title + '" loading="lazy">'
       + '</div>'
@@ -123,25 +123,3 @@ function renderPagination(totalPages) {
   if (prevBtn) prevBtn.addEventListener('click', function () { renderPage(currentPage - 1); });
   if (nextBtn) nextBtn.addEventListener('click', function () { renderPage(currentPage + 1); });
 }
-
-const fadeUps = document.querySelectorAll('.fade-up');
-
-const fadeUpObserver = new IntersectionObserver((entries) => {
-
-  entries.forEach((entry) => {
-
-    if (entry.isIntersecting) {
-
-      entry.target.classList.add('show');
-
-    }
-
-  });
-
-}, {
-  threshold: 0.2
-});
-
-fadeUps.forEach((fadeUp) => {
-  fadeUpObserver.observe(fadeUp);
-});
