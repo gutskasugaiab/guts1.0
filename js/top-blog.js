@@ -32,3 +32,25 @@ fetch('blog.json')
   .catch(function (err) {
     console.error('blog.json の読み込みに失敗しました:', err);
   });
+
+const fadeUps = document.querySelectorAll('.fade-up');
+
+const fadeUpObserver = new IntersectionObserver((entries) => {
+
+  entries.forEach((entry) => {
+
+    if (entry.isIntersecting) {
+
+      entry.target.classList.add('show');
+
+    }
+
+  });
+
+}, {
+  threshold: 0.2
+});
+
+fadeUps.forEach((fadeUp) => {
+  fadeUpObserver.observe(fadeUp);
+});

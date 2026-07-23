@@ -123,3 +123,25 @@ function renderPagination(totalPages) {
   if (prevBtn) prevBtn.addEventListener('click', function () { renderPage(currentPage - 1); });
   if (nextBtn) nextBtn.addEventListener('click', function () { renderPage(currentPage + 1); });
 }
+
+const fadeUps = document.querySelectorAll('.fade-up');
+
+const fadeUpObserver = new IntersectionObserver((entries) => {
+
+  entries.forEach((entry) => {
+
+    if (entry.isIntersecting) {
+
+      entry.target.classList.add('show');
+
+    }
+
+  });
+
+}, {
+  threshold: 0.2
+});
+
+fadeUps.forEach((fadeUp) => {
+  fadeUpObserver.observe(fadeUp);
+});
