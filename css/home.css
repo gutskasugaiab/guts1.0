@@ -50,6 +50,13 @@
 }
 
 
+@media (max-width:860px) {
+
+    .loader-video-wrap video {
+        width: 90%;
+    }
+}
+
 /* ---- hero ---- */
 .hero {
     display: flex;
@@ -133,15 +140,9 @@
 }
 
 .about-visual {
-    grid-column: 1;
-    grid-row: 1;
+    width: 100%;
     aspect-ratio: 4/5;
     background: var(--iron);
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .about-visual img {
@@ -154,11 +155,6 @@
     font-family: "Cormorant Garamond", serif;
     font-size: 8rem;
     color: rgba(242, 237, 228, .06);
-}
-
-.about-copy {
-    grid-column: 2;
-    grid-row: 1;
 }
 
 .about-copy p {
@@ -180,32 +176,30 @@
     margin-top: 4.8rem;
 }
 
-/* PC/SPで表示する画像を切り替え */
-.sp-v {
-    display: none;
+
+
+/* ---- responsive ---- */
+@media (max-width:768px) {
+    .about-grid {
+        grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+}
+@media (max-width:500px) {
+    .about-visual{
+        object-fit: contain;
+        aspect-ratio: 2/ 1.5;
+    }
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+    }
+
+    .g-u-t-s {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
-@media (max-width:860px) {
-    .pc-v {
-        display: none;
-    }
-
-    .sp-v {
-        display: flex;
-        grid-column: 1;
-        grid-row: 1;
-        aspect-ratio: 6 / 4;
-    }
-
-    .about-copy {
-        grid-column: 1;
-        grid-row: 2;
-    }
-
-    .loader-video-wrap video {
-        width: 90%;
-    }
-}
 
 .g-u-t-s div {
     border-left: 1px solid var(--blood);
@@ -401,15 +395,3 @@
     font-size: 1.568rem;
 }
 
-
-/* ---- responsive ---- */
-@media (max-width:860px) {
-    .about-grid {
-        grid-template-columns: 1fr;
-        gap: 4rem;
-    }
-
-    .g-u-t-s {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
