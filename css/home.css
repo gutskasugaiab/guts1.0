@@ -137,7 +137,6 @@
     grid-row: 1;
     aspect-ratio: 4/5;
     background: var(--iron);
-    border: 1px solid var(--line);
     position: relative;
     overflow: hidden;
     display: flex;
@@ -229,7 +228,7 @@
 
 /* ---- business cards（3事業） ---- */
 .business {
-   width: 100%;
+    width: 100%;
 }
 
 .biz-grid {
@@ -351,6 +350,36 @@
 }
 
 /* ---- CTAバンド（お問い合わせ誘導） ---- */
+#contact.band {
+    position: relative;
+    overflow: hidden;
+}
+
+#contact.band>video.bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: right center;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+#contact.band>div {
+    position: relative;
+    z-index: 1;
+}
+#contact.band::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.5);
+  z-index: 0;
+}
+
 .band {
     padding: 13rem 6vw;
     text-align: center;
@@ -361,7 +390,7 @@
 .band h2 {
     font-family: "Shippori Mincho", serif;
     font-weight: 600;
-    font-size: clamp(2.56rem, 3vw, 3.84rem);
+    font-size: 3.52rem;
     margin-bottom: 2.6rem;
     letter-spacing: .05em;
 }
@@ -369,7 +398,9 @@
 .band p {
     color: var(--smoke);
     margin-bottom: 4rem;
+    font-size: 1.568rem;
 }
+
 
 /* ---- responsive ---- */
 @media (max-width:860px) {
