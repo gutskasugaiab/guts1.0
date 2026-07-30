@@ -530,7 +530,7 @@ section {
 
 /* ---- footer ---- */
 footer {
-    padding: 6rem 6vw 4rem;
+    padding: 2rem 6vw;
     border-top: 1px solid var(--line);
     display: flex;
     justify-content: space-between;
@@ -576,7 +576,7 @@ footer {
     width: 100%;
     color: var(--smoke);
     font-size: 1.152rem;
-    margin-top: 3rem;
+    margin-top: 0.5rem;
     opacity: .6;
 }
 
