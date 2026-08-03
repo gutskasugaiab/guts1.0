@@ -127,6 +127,14 @@
   justify-content: center;
 }
 
+
+@media (max-width:860px) {
+
+  .hero-img {
+    width: 80vw;
+  }
+}
+
 /* ---- about / mission ---- */
 .about {
   background: var(--paper);
