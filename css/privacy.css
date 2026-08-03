@@ -6,7 +6,7 @@
   font-size: 14px;
   line-height: 2;
 }
-@media (min-width: 950px) {
+@media (min-width: 1024px) {
   .policy {
     display: flex;
     gap: 50px;
@@ -23,7 +23,7 @@
 .policy .index {
   display: none;
 }
-@media (min-width: 950px) {
+@media (min-width: 1024px) {
   .policy .index {
     display: block;
     margin: 0;

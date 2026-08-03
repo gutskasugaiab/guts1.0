@@ -38,7 +38,7 @@
     '</div>';
 
   var footerHTML =
-    '<div>\n' +
+    '<div class="foot-logo-row">\n' +
     '    <a class="foot-brand" href="index.html"><img src="img/logo.png" alt="GUTS1.0"></a>\n' +
     '  </div>\n' +
     '  <div class="foot-links">\n      ' + navHTML() + '\n' +

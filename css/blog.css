@@ -34,13 +34,13 @@
   gap: 2.5rem;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 767px) {
   .blog-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 500px) {
   .blog-grid {
     grid-template-columns: 1fr;
   }

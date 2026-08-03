@@ -98,7 +98,7 @@
     text-transform: uppercase;
 }
 
-@media (max-width:860px) {
+@media (max-width:767px) {
     .biz-index-grid {
         grid-template-columns: 1fr;
     }

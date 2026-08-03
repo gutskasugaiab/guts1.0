@@ -27,8 +27,9 @@
 
 .feature-card {
     padding: 3.8rem 3rem;
-     transition: filter 0.3s ease;
+    transition: filter 0.3s ease;
 }
+
 .feature-card:hover {
     filter: brightness(1.2);
 }
@@ -47,41 +48,41 @@
 }
 
 .feature-card .img {
-  margin-bottom: 1rem;
-  width: 100%;
-  aspect-ratio: 2 / 1;
-  height: auto;
-  object-fit: cover;
+    margin-bottom: 1rem;
+    width: 100%;
+    aspect-ratio: 2 / 1;
+    height: auto;
+    object-fit: cover;
 }
 
 .feature-card .title {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
 }
 
 .feature-card .tag {
-  display: flex;
-  flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .feature-card .tag span {
-  margin: .5em 1em .5em 0;
-  padding: .1em .7em .2em .7em;
-  color: var(--bone);
-  font-size: 1.2rem;
-  border: 2px solid var(--blood);
-  border-radius: 9999px;
+    margin: .5em 1em .5em 0;
+    padding: .1em .7em .2em .7em;
+    color: var(--bone);
+    font-size: 1.2rem;
+    border: 2px solid var(--blood);
+    border-radius: 9999px;
 }
 
 .feature-card .fa-solid {
-  margin-top: .8rem;
-  font-size: 2em;
+    margin-top: .8rem;
+    font-size: 2em;
 }
 
-@media (max-width:860px) {
+@media (max-width:767px) {
     .feature-list {
         grid-template-columns: 1fr;
     }

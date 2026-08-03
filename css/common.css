@@ -3,26 +3,26 @@
 =================================================== */
 
 html {
-    scroll-behavior: smooth;
-    font-size: min(calc(12 / 1440 * 100vw), 12px);
+  scroll-behavior: smooth;
+  font-size: min(calc(12 / 1440 * 100vw), 12px);
 }
 
 @media (max-width: 1024px) {
-    html {
-        font-size: min(calc(12 / 1024 * 100vw), 12px);
-    }
+  html {
+    font-size: min(calc(12 / 1024 * 100vw), 12px);
+  }
 }
 
 @media screen and (max-width: 767px) {
-    html {
-        font-size: min(calc(12 / 767 * 100vw), 12px);
-    }
+  html {
+    font-size: min(calc(12 / 767 * 100vw), 12px);
+  }
 }
 
-@media (max-width: 480px) {
-    html {
-        font-size: min(calc(12 / 480 * 100vw), 12px);
-    }
+@media (max-width: 500px) {
+  html {
+    font-size: min(calc(12 / 500 * 100vw), 12px);
+  }
 }
 
 /* @media (max-width: 768px) and (max-height: 500px) {
@@ -32,275 +32,275 @@ html {
 } */
 
 :root {
-    --ink: #0a0a09;
-    --iron: #141311;
-    --blood: #a3222c;
-    --ember: #d17b7f;
-    --bone: #f2ede4;
-    --paper: #000;
-    --smoke: #c6c4c2;
-    --line: rgba(242, 237, 228, .09);
+  --ink: #0a0a09;
+  --iron: #141311;
+  --blood: #a3222c;
+  --ember: #d17b7f;
+  --bone: #f2ede4;
+  --paper: #000;
+  --smoke: #c6c4c2;
+  --line: rgba(242, 237, 228, .09);
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    background: var(--paper);
-    color: var(--bone);
-    font-family: "Noto Sans JP", sans-serif;
-    line-height: 1.8;
-    overflow-x: hidden;
-    position: relative;
-    z-index: 0;
+  background: var(--paper);
+  color: var(--bone);
+  font-family: "Noto Sans JP", sans-serif;
+  line-height: 1.8;
+  overflow-x: hidden;
+  position: relative;
+  z-index: 0;
 }
 
 img {
-    max-width: 100%;
-    display: block;
+  max-width: 100%;
+  display: block;
 }
 
 a {
-    color: inherit;
-    text-decoration: none;
+  color: inherit;
+  text-decoration: none;
 }
 
 .eyebrow {
-    font-size: 1.152rem;
-    letter-spacing: .3em;
-    color: var(--ember);
-    text-transform: uppercase;
-    font-weight: 700;
+  font-size: 1.152rem;
+  letter-spacing: .3em;
+  color: var(--ember);
+  text-transform: uppercase;
+  font-weight: 700;
 }
 
 /* ---- header ---- */
 header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 300;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 300;
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-    padding: 1rem 6vw;
+  padding: 1rem 6vw;
 
-    background: linear-gradient(180deg,
-            rgba(12, 10, 9, .92),
-            transparent);
-    transition: background .35s ease;
+  background: linear-gradient(180deg,
+      rgba(12, 10, 9, .92),
+      transparent);
+  transition: background .35s ease;
 }
 
 
 /* ナビを開いた時、ヘッダー背景を透明にする */
 header:has(.nav-toggle.open) {
-    background: transparent;
+  background: transparent;
 }
 
 
 .logo-mark {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .logo-video {
-    height: 7.6rem;
-    width: auto;
-    display: block;
+  height: 7.6rem;
+  width: auto;
+  display: block;
 }
 
 .logo-mark {
-    position: relative;
-    display: inline-block;
-    z-index: 310;
+  position: relative;
+  display: inline-block;
+  z-index: 310;
 }
 
 .logo-video,
 .logo-image {
-    opacity: 0;
-    transition: opacity 0.6s ease;
+  opacity: 0;
+  transition: opacity 0.6s ease;
 }
 
 .logo-image {
-    height: 7.6rem;
-    position: absolute;
-    top: 0;
-    left: 0;
+  height: 7.6rem;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .logo-video.visible,
 .logo-image.visible {
-    opacity: 1;
+  opacity: 1;
 }
 
 nav.nav-desktop {
-    display: flex;
-    gap: 2.4vw;
-    font-size: 1.56rem;
-    letter-spacing: .05em;
+  display: flex;
+  gap: 2.4vw;
+  font-size: 1.56rem;
+  letter-spacing: .05em;
 }
 
 nav.nav-desktop a {
-    opacity: .75;
-    transition: opacity .25s, color .25s;
+  opacity: .75;
+  transition: opacity .25s, color .25s;
 }
 
 nav.nav-desktop a:hover {
-    opacity: 1;
-    color: var(--ember);
+  opacity: 1;
+  color: var(--ember);
 }
 
 nav.nav-desktop a.active {
-    opacity: 1;
-    color: var(--blood);
+  opacity: 1;
+  color: var(--blood);
 }
 
 /* ハンバーガー */
 .nav-toggle {
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    gap: .6rem;
-    width: 4.4rem;
-    height: 4.4rem;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    position: relative;
-    z-index: 310;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: .6rem;
+  width: 4.4rem;
+  height: 4.4rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  z-index: 310;
 }
 
 .nav-toggle span {
-    display: block;
-    width: 100%;
-    height: 1px;
-    background: var(--bone);
-    transition: transform .3s ease, opacity .3s ease;
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: var(--bone);
+  transition: transform .3s ease, opacity .3s ease;
 }
 
 .nav-toggle.open span:nth-child(1) {
-    transform: translateY(.7rem) rotate(45deg);
+  transform: translateY(.7rem) rotate(45deg);
 }
 
 .nav-toggle.open span:nth-child(2) {
-    opacity: 0;
+  opacity: 0;
 }
 
 .nav-toggle.open span:nth-child(3) {
-    transform: translateY(-.7rem) rotate(-45deg);
+  transform: translateY(-.7rem) rotate(-45deg);
 }
 
 .nav-mobile {
-    position: fixed;
-    inset: 0;
+  position: fixed;
+  inset: 0;
 
-    width: 100%;
-    height: 100dvh;
+  width: 100%;
+  height: 100dvh;
 
-    box-sizing: border-box;
+  box-sizing: border-box;
 
-    background: var(--paper);
+  background: var(--paper);
 
-    z-index: 200;
+  z-index: 200;
 
-    opacity: 0;
-    visibility: hidden;
+  opacity: 0;
+  visibility: hidden;
 
-    /* flexを使わない */
-    display: block;
+  /* flexを使わない */
+  display: block;
 
-    /* ナビ全体をスクロール */
-    overflow-x: hidden;
-    overflow-y: auto;
+  /* ナビ全体をスクロール */
+  overflow-x: hidden;
+  overflow-y: auto;
 
-    -webkit-overflow-scrolling: touch;
+  -webkit-overflow-scrolling: touch;
 
-    /* 上側の余白 */
-    padding-top: 10rem;
-    padding-right: 2rem;
-    padding-bottom: 6rem;
-    padding-left: 2rem;
+  /* 上側の余白 */
+  padding-top: 10rem;
+  padding-right: 2rem;
+  padding-bottom: 6rem;
+  padding-left: 2rem;
 }
 
 .nav-mobile.open {
-    opacity: 1;
-    visibility: visible;
+  opacity: 1;
+  visibility: visible;
 }
 
 .nav-mobile nav {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-    align-items: center;
+  align-items: center;
 
-    gap: 3.2rem;
+  gap: 3.2rem;
 
-    width: 100%;
-    max-width: 100%;
+  width: 100%;
+  max-width: 100%;
 
-    box-sizing: border-box;
+  box-sizing: border-box;
 
-    /* nav側に余計な位置調整をしない */
-    margin: 0;
-    padding: 0;
+  /* nav側に余計な位置調整をしない */
+  margin: 0;
+  padding: 0;
 }
 
 .nav-mobile nav a {
-    font-family: "Shippori Mincho", serif;
-    font-size: 2.2rem;
-    letter-spacing: .1em;
-    color: var(--bone);
+  font-family: "Shippori Mincho", serif;
+  font-size: 2.2rem;
+  letter-spacing: .1em;
+  color: var(--bone);
 }
 
 .nav-mobile nav a.active {
-    color: var(--blood);
+  color: var(--blood);
 }
 
 
 /* ---- buttons ---- */
 .btn {
-    margin: 0 0 1rem;
-    padding: 1.6rem 4rem;
-    font-size: 1.216rem;
-    letter-spacing: .22em;
-    text-transform: uppercase;
-    font-weight: 500;
-    border-radius: 0;
-    transition: transform .25s, box-shadow .25s, background .25s, color .25s, border-color .25s;
-    display: inline-block;
-    text-align: center;
+  margin: 0 0 1rem;
+  padding: 1.6rem 4rem;
+  font-size: 1.216rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  font-weight: 500;
+  border-radius: 0;
+  transition: transform .25s, box-shadow .25s, background .25s, color .25s, border-color .25s;
+  display: inline-block;
+  text-align: center;
 }
 
 .btn-primary {
-    background: var(--blood);
-    color: var(--bone);
-    box-shadow: 0 4px 20px rgba(163, 34, 44, .2);
+  background: var(--blood);
+  color: var(--bone);
+  box-shadow: 0 4px 20px rgba(163, 34, 44, .2);
 }
 
 .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 26px rgba(163, 34, 44, .35);
-    background: var(--ember);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 26px rgba(163, 34, 44, .35);
+  background: var(--ember);
 }
 
 .btn-ghost {
-    border: 2px solid rgba(242, 237, 228, .5);
-    color: var(--bone);
+  border: 2px solid rgba(242, 237, 228, .5);
+  color: var(--bone);
 }
 
 .btn-ghost:hover {
-    border-color: var(--blood);
-    color: var(--ember);
+  border-color: var(--blood);
+  color: var(--ember);
 }
 
 .contact-cta {
-    width: 17rem;
+  width: 17rem;
 }
 
 /* ---- section shell (トップの各セクション共通) ---- */
@@ -312,272 +312,272 @@ nav.nav-desktop a.active {
 
 
 .bg-video {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 50%;
-    height: auto;
-    z-index: -1;
-    object-fit: cover;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: auto;
+  z-index: -1;
+  object-fit: cover;
 }
 
 .bg-video-btm {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 50%;
-    height: auto;
-    z-index: -1;
-    object-fit: cover;
-    opacity: 0;
-    transition: opacity 1s ease;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50%;
+  height: auto;
+  z-index: -1;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease;
 }
 
 .bg-video-btm.visible {
-    opacity: 1;
+  opacity: 1;
 }
 
 .main-content {
-    position: relative;
-    z-index: 0;
+  position: relative;
+  z-index: 0;
 }
 
 section {
-    padding: 13rem 6vw;
-    position: relative;
+  padding: 13rem 6vw;
+  position: relative;
 }
 
 .section-head {
-    max-width: 64rem;
-    margin-bottom: 6.4rem;
+  max-width: 64rem;
+  margin-bottom: 6.4rem;
 }
 
 .section-head h2 {
-    font-family: "Shippori Mincho", serif;
-    font-size: clamp(3.2rem, 4vw, 4.8rem);
-    margin-top: 1.4rem;
-    color: var(--bone);
+  font-family: "Shippori Mincho", serif;
+  font-size: clamp(3.2rem, 4vw, 4.8rem);
+  margin-top: 1.4rem;
+  color: var(--bone);
 }
 
 .section-head p {
-    margin-top: 2rem;
-    color: var(--smoke);
-    font-size: 1.568rem;
-    max-width: 52ch;
+  margin-top: 2rem;
+  color: var(--smoke);
+  font-size: 1.568rem;
+  max-width: 52ch;
 }
 
 /* ---- sub page header（下層ページ共通） ---- */
 .page-header {
-    padding: 17rem 6vw 7rem;
-    border-bottom: 1px solid var(--line);
+  padding: 17rem 6vw 7rem;
+  border-bottom: 1px solid var(--line);
 
 }
 
 .breadcrumb {
-    font-size: 1.248rem;
-    color: var(--smoke);
-    letter-spacing: .04em;
-    margin-bottom: 2rem;
+  font-size: 1.248rem;
+  color: var(--smoke);
+  letter-spacing: .04em;
+  margin-bottom: 2rem;
 }
 
 .breadcrumb a {
-    color: var(--smoke);
-    transition: color .25s;
+  color: var(--smoke);
+  transition: color .25s;
 }
 
 .breadcrumb a:hover {
-    color: var(--ember);
+  color: var(--ember);
 }
 
 .page-header h1 {
-    font-family: "Shippori Mincho", serif;
-    font-size: clamp(3.52rem, 5vw, 5.76rem);
+  font-family: "Shippori Mincho", serif;
+  font-size: clamp(3.52rem, 5vw, 5.76rem);
 }
 
 .page-header .eyebrow {
-    margin-bottom: 1.6rem;
+  margin-bottom: 1.6rem;
 }
 
 .page-lead {
-    color: var(--smoke);
-    margin-top: 2.2rem;
-    max-width: 56ch;
-    font-size: 1.6rem;
+  color: var(--smoke);
+  margin-top: 2.2rem;
+  max-width: 56ch;
+  font-size: 1.6rem;
 }
 
 /* ---- content blocks（下層ページ本文共通） ---- */
 .content {
-    padding: 3rem 6vw;
+  padding: 3rem 6vw;
 }
 
 .content-narrow {
-    max-width: 96rem;
-    margin: 0 auto;
+  max-width: 96rem;
+  margin: 0 auto;
 }
 
 .content h2 {
-    font-family: "Shippori Mincho", serif;
-    font-size: 3.52rem;
-    margin: 6rem 0 2.2rem;
+  font-family: "Shippori Mincho", serif;
+  font-size: 3.52rem;
+  margin: 6rem 0 2.2rem;
 }
 
 
 .content h2:first-child {
-    margin-top: 0;
+  margin-top: 0;
 }
 
 .content h3 {
-    font-family: "Shippori Mincho", serif;
-    color: var(--smoke);
-    font-size: clamp(2.56rem, 1.5vw, 3.52rem);
-    margin: 0 0 2.2rem;
+  font-family: "Shippori Mincho", serif;
+  color: var(--smoke);
+  font-size: clamp(2.56rem, 1.5vw, 3.52rem);
+  margin: 0 0 2.2rem;
 }
 
 .content p {
-    color: var(--smoke);
-    margin-bottom: 1.8rem;
-    font-size: 1.568rem;
+  color: var(--smoke);
+  margin-bottom: 1.8rem;
+  font-size: 1.568rem;
 }
 
 .content ul {
-    margin: 0 0 2.4rem 1.2em;
-    color: var(--smoke);
+  margin: 0 0 2.4rem 1.2em;
+  color: var(--smoke);
 }
 
 .content li {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
 .content strong {
-    color: var(--bone);
+  color: var(--bone);
 }
 
 /* ---- 会社概要テーブル（index / company で共用） ---- */
 .ov-table {
-    border-top: 1px solid var(--line);
+  border-top: 1px solid var(--line);
 }
 
 .ov-row {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    gap: 2.4rem;
-    padding: 2.4rem 0;
-    border-bottom: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 2.4rem;
+  padding: 2.4rem 0;
+  border-bottom: 1px solid var(--line);
 }
 
 .ov-row dt {
-    color: var(--ember);
-    font-size: 1.312rem;
-    letter-spacing: .1em;
-    text-transform: uppercase;
+  color: var(--ember);
+  font-size: 1.312rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
 }
 
 .ov-row dd {
-    color: var(--bone);
-    font-size: 1.536rem;
+  color: var(--bone);
+  font-size: 1.536rem;
 }
 
 /* ---- ニュースリスト（index / news で共用） ---- */
 .news-list {
-    border-top: 1px solid var(--line);
+  border-top: 1px solid var(--line);
 }
 
 .news-item {
-    display: grid;
-    grid-template-columns: 120px 100px 1fr 20px;
-    gap: 2.4rem;
-    align-items: center;
-    padding: 2.6rem 0;
-    border-bottom: 1px solid var(--line);
-    transition: padding-left .3s, background .3s;
+  display: grid;
+  grid-template-columns: 120px 100px 1fr 20px;
+  gap: 2.4rem;
+  align-items: center;
+  padding: 2.6rem 0;
+  border-bottom: 1px solid var(--line);
+  transition: padding-left .3s, background .3s;
 }
 
 .news-item:hover {
-    padding-left: 1.4rem;
-    background: rgba(163, 34, 44, .05);
+  padding-left: 1.4rem;
+  background: rgba(163, 34, 44, .05);
 }
 
 .news-item time {
-    color: var(--smoke);
-    font-size: 1.312rem;
-    letter-spacing: .05em;
+  color: var(--smoke);
+  font-size: 1.312rem;
+  letter-spacing: .05em;
 }
 
 .news-item .tag {
-    font-size: 1.088rem;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    color: var(--ember);
-    border: 1px solid rgba(163, 34, 44, .35);
-    padding: 0.4rem 1rem;
-    text-align: center;
+  font-size: 1.088rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ember);
+  border: 1px solid rgba(163, 34, 44, .35);
+  padding: 0.4rem 1rem;
+  text-align: center;
 }
 
 .news-item p {
-    color: var(--bone);
-    font-size: 1.52rem;
+  color: var(--bone);
+  font-size: 1.52rem;
 }
 
 .news-item .arrow {
-    color: var(--smoke);
-    transition: transform .3s, color .3s;
+  color: var(--smoke);
+  transition: transform .3s, color .3s;
 }
 
 .news-item:hover .arrow {
-    transform: translateX(6px);
-    color: var(--ember);
+  transform: translateX(6px);
+  color: var(--ember);
 }
 
 /* ---- footer ---- */
 footer {
-    padding: 2rem 6vw;
-    border-top: 1px solid var(--line);
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    flex-wrap: wrap;
-    gap: 3rem;
+  padding: 2rem 6vw;
+  border-top: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 3rem;
 }
 
 .foot-brand {
-    display: inline-block;
+  display: inline-block;
 }
 
 .foot-brand img {
-    height: 13rem;
-    width: auto;
-    display: block;
+  height: 13rem;
+  width: auto;
+  display: block;
 }
 
 .foot-tag {
-    color: var(--smoke);
-    font-size: 1.28rem;
-    margin-top: 0.8rem;
-    letter-spacing: .05em;
+  color: var(--smoke);
+  font-size: 1.28rem;
+  margin-top: 0.8rem;
+  letter-spacing: .05em;
 }
 
 .foot-links {
-    display: flex;
-    gap: 2.6rem;
-    font-size: 1.512rem;
-    flex-wrap: wrap;
+  display: flex;
+  gap: 3rem;
+  font-size: 1.512rem;
+  flex-wrap: wrap;
 }
 
 .foot-links a {
-    color: var(--smoke);
-    transition: color .25s;
+  color: var(--smoke);
+  transition: color .25s;
 }
 
 .foot-links a:hover {
-    color: var(--ember);
+  color: var(--ember);
 }
 
 .foot-copy {
-    width: 100%;
-    color: var(--smoke);
-    font-size: 1.152rem;
-    margin-top: 0.5rem;
-    opacity: .6;
+  width: 100%;
+  color: var(--smoke);
+  font-size: 1.152rem;
+  margin-top: 0.5rem;
+  opacity: .6;
 }
 
 /* =========================
@@ -585,126 +585,139 @@ footer {
 ========================= */
 
 .fade-up {
-    opacity: 0;
-    transform: translateY(60px);
-    filter: blur(8px);
-    transition:
-        opacity 1.4s cubic-bezier(0.22, 1, 0.36, 1),
-        transform 1.4s cubic-bezier(0.22, 1, 0.36, 1),
-        filter 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+  opacity: 0;
+  transform: translateY(60px);
+  filter: blur(8px);
+  transition:
+    opacity 1.4s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1.4s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 1.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .fade-up.show {
-    opacity: 1;
-    transform: translateY(0);
-    filter: blur(0);
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
 }
 
 .sp-br {
-    display: none;
+  display: none;
 }
 
 /* 右下固定 */
 .fixed-cta {
-    position: fixed;
-    right: 2rem;
-    bottom: 2rem;
-    z-index: 999;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    position: fixed;
-    z-index: 50;
-    transition: bottom 0.3s ease;
-    left: auto;
-    /* ←これ重要（中央防止） */
-    transform: none;
-    animation: fadeInUp 0.8s ease;
+  position: fixed;
+  right: 2rem;
+  bottom: 2rem;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  position: fixed;
+  z-index: 50;
+  transition: bottom 0.3s ease;
+  left: auto;
+  /* ←これ重要（中央防止） */
+  transform: none;
+  animation: fadeInUp 0.8s ease;
 }
 
 @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(40px);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .btn-cta {
-    padding: 0.5rem 1rem;
-    text-align: center;
-    font-size: 1rem;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  font-size: 1rem;
 }
 
 /* さぽえるボックス */
 .sapo-box {
-    padding: 1rem;
-    border-radius: 1rem;
-    text-align: center;
+  padding: 1rem;
+  border-radius: 1rem;
+  text-align: center;
 }
 
 /* さぽえる画像 */
 .sapo-box img {
-    width: 10rem;
-    height: auto;
-    display: block;
+  width: 10rem;
+  height: auto;
+  display: block;
 }
 
 @media (prefers-reduced-motion:reduce) {
-    .reveal {
-        transition: none;
-        opacity: 1;
-        transform: none;
-    }
+  .reveal {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
 
-    html {
-        scroll-behavior: auto;
-    }
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 /* ---- responsive（共通） ---- */
-@media (max-width:860px) {
-    nav.nav-desktop {
-        display: none;
-    }
+@media (max-width:767px) {
+  nav.nav-desktop {
+    display: none;
+  }
 
-    .nav-toggle {
-        display: flex;
-    }
+  .nav-toggle {
+    display: flex;
+  }
 
-    section {
-        padding: 9rem 6vw;
-    }
+  section {
+    padding: 9rem 6vw;
+  }
 
-    .ov-row {
-        grid-template-columns: 1fr;
-        gap: 0.6rem;
-    }
+  .ov-row {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
 
-    .news-item {
-        grid-template-columns: 80px 1fr 16px;
-    }
+  .news-item {
+    grid-template-columns: 80px 1fr 16px;
+  }
 
-    .news-item .tag {
-        display: none;
-    }
+  .news-item .tag {
+    display: none;
+  }
 
-    .pc-br {
-        display: none;
-    }
+  .pc-br {
+    display: none;
+  }
 
-    .sp-br {
-        display: block;
-    }
+  .sp-br {
+    display: block;
+  }
 
-    /* さぽえる画像 */
-    .sapo-box img {
-        width: 8rem;
+  /* さぽえる画像 */
+  .sapo-box img {
+    width: 8rem;
 
-    }
+  }
+
+
+}
+
+@media (max-width:500px) {
+
+  /* フッターロゴをSPでは中央寄せ */
+  .foot-logo-row {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
 }

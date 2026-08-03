@@ -50,7 +50,7 @@
 }
 
 
-@media (max-width:860px) {
+@media (max-width:767px) {
 
   .loader-video-wrap video {
     width: 90%;
@@ -128,7 +128,7 @@
 }
 
 
-@media (max-width:860px) {
+@media (max-width:767px) {
 
   .hero-img {
     width: 80vw;
@@ -185,7 +185,7 @@
 }
 
 /* ---- responsive ---- */
-@media (max-width:768px) {
+@media (max-width:767px) {
   .about-grid {
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
