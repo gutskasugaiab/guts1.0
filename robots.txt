@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gutskasugaiab.github.io/guts1.0/sitemap.xml

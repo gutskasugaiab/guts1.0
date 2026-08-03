@@ -19,6 +19,15 @@
       document.getElementById('page-title').textContent = post.title + ' | GUTS1.0 株式会社';
       document.getElementById('page-description').setAttribute('content', post.description);
 
+      document.getElementById('og-title').setAttribute('content', post.title + ' | GUTS1.0 株式会社');
+      document.getElementById('og-description').setAttribute('content', post.description);
+      document.getElementById('og-url').setAttribute('content', window.location.href);
+      document.getElementById('twitter-title').setAttribute('content', post.title + ' | GUTS1.0 株式会社');
+      document.getElementById('twitter-description').setAttribute('content', post.description);
+
+      var canonicalLink = document.querySelector('link[rel="canonical"]');
+      if (canonicalLink) canonicalLink.setAttribute('href', window.location.href);
+
       // 本文エリア
       document.getElementById('article-eyebrow').textContent = post.tag;
       document.getElementById('article-title').textContent = post.title;
