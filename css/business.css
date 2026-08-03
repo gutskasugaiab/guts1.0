@@ -31,11 +31,11 @@
         grid-template-columns: 1fr;
     }
 
-    .biz-row.reverse .biz-image {
+    .biz-row.reverse .biz-index-image {
         order: 1;
     }
 
-    .biz-row.reverse .biz-card {
+    .biz-row.reverse .biz-index-card {
         order: 2;
     }
 }
