@@ -202,10 +202,6 @@
     grid-template-columns: 1fr;
     gap: 4rem;
   }
-
-  .g-u-t-s {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }
 
 
