@@ -536,7 +536,7 @@ footer {
   justify-content: space-between;
   align-items: flex-end;
   flex-wrap: wrap;
-  gap: 3rem;
+  gap: 1rem;
 }
 
 .foot-brand {
@@ -558,7 +558,7 @@ footer {
 
 .foot-links {
   display: flex;
-  gap: 3rem;
+  gap: 1rem 2.62rem;
   font-size: 1.512rem;
   flex-wrap: wrap;
 }
