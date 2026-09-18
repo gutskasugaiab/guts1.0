@@ -749,7 +749,7 @@ footer {
 
 .lp-banner-thumb {
   flex: 0 0 240px;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 16 / 12;
   overflow: hidden;
 }
 
