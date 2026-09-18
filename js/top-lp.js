@@ -9,7 +9,7 @@ fetch('data/lp.json', { cache: 'no-store' })
 
     var html = items.map(function (lp) {
       return ''
-        + '<a class="lp-banner fade-up" href="' + lp.url + '">'
+        + '<a class="lp-banner" href="' + lp.url + '">'
         + (lp.thumbnail
             ? '<div class="lp-banner-thumb"><img src="' + lp.thumbnail + '" alt="' + lp.title + '" loading="lazy"></div>'
             : '')
