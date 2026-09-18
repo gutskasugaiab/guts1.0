@@ -729,7 +729,7 @@ footer {
 }
 
 /* PC：2列・画像と文字を横並び */
-@media (min-width: 1000px) {
+@media (min-width: 1024px) {
   .lp-banner-grid {
     grid-template-columns: 1fr 1fr;
   }
@@ -751,7 +751,7 @@ footer {
 }
 
 /* タブレット：2列・画像と文字を縦並び */
-@media (min-width: 901px) and (max-width: 999px) {
+@media (max-width: 767px) {
   .lp-banner-grid {
     grid-template-columns: 1fr 1fr;
   }
@@ -774,7 +774,7 @@ footer {
 }
 
 /* スマホ：1列・画像と文字を縦並び */
-@media (max-width: 900px) {
+@media (max-width: 500px) {
   .lp-banner-grid {
     grid-template-columns: 1fr;
   }
