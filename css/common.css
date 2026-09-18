@@ -728,7 +728,7 @@ footer {
   margin: 2rem 6vw;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1000px) {
   .lp-banner-grid {
     grid-template-columns: 1fr 1fr;
   }
@@ -779,7 +779,7 @@ footer {
   text-transform: uppercase;
 }
 
-@media (max-width:767px) {
+@media (max-width:900px) {
   .lp-banner {
     flex-direction: column;
     align-items: stretch;
