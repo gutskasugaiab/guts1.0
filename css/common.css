@@ -741,7 +741,6 @@ footer {
   border: 1px solid var(--line);
   padding: 2rem;
   transition: filter .3s ease;
-  z-index: 1;
 }
 
 .lp-banner:hover {
@@ -757,7 +756,7 @@ footer {
 .lp-banner-thumb img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .lp-banner-body h3 {
