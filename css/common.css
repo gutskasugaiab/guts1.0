@@ -721,18 +721,83 @@ footer {
   }
 
 }
-/* ---- LP banner（data/lp.json から top-lp.js が自動生成／0件時は非表示） ---- */
+/* ---- LP banner ---- */
 .lp-banner-grid {
   display: grid;
   gap: 2rem;
   margin: 2rem 6vw;
-  grid-template-columns: 1fr 1fr;
 }
 
+/* PC：2列・画像と文字を横並び */
+@media (min-width: 1000px) {
+  .lp-banner-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .lp-banner {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .lp-banner-thumb {
+    flex: 0 0 30rem;
+  }
+
+  .lp-banner-body {
+    flex: 1;
+  }
+}
+
+/* タブレット：2列・画像と文字を縦並び */
+@media (min-width: 901px) and (max-width: 999px) {
+  .lp-banner-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .lp-banner {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.5rem;
+  }
+
+  .lp-banner-thumb {
+    width: 100%;
+    flex: none;
+  }
+
+  .lp-banner-body {
+    width: 100%;
+  }
+}
+
+/* スマホ：1列・画像と文字を縦並び */
+@media (max-width: 900px) {
+  .lp-banner-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lp-banner {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.5rem;
+  }
+
+  .lp-banner-thumb {
+    width: 100%;
+    flex: none;
+  }
+
+  .lp-banner-body {
+    width: 100%;
+  }
+}
+
+/* 共通 */
 .lp-banner {
-  display: flex;
-  gap: 2rem;
-  align-items: center;
   border: 1px solid var(--line);
   padding: 2rem;
   transition: filter .3s ease;
@@ -743,7 +808,6 @@ footer {
 }
 
 .lp-banner-thumb {
-  flex: 0 0 30rem;
   aspect-ratio: 16 / 9;
   overflow: hidden;
 }
@@ -772,16 +836,4 @@ footer {
   letter-spacing: .1em;
   color: var(--ember);
   text-transform: uppercase;
-}
-
-@media (max-width:900px) {
-  .lp-banner {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .lp-banner-thumb {
-    flex: none;
-    width: 100%;
-  }
 }
