@@ -1,0 +1,49 @@
+{
+	"folders": [
+		{
+			"path": "../../LP/CareNaviAI"
+		},
+		{
+			"path": "../../LP/LP"
+		},
+		{
+			"path": "../../../Local Sites/test/app/public/wp-content/themes/CareNaviAI"
+		},
+		{
+			"path": "../../../Local Sites/sekison/app/public/wp-content/themes/sekison"
+		},
+		{
+			"path": "../../test案件/skillcheck1_024"
+		},
+		{
+			"path": "../../../Local Sites/guts10/app/public/wp-content/themes/gut1.0"
+		},
+		{
+			"path": "../../../Local Sites/ec/app/public/wp-content/themes/my-shop"
+		},
+		{
+			"path": "../../../Local Sites/portfolio/app/public/wp-content/themes/portfolio"
+		},
+		{
+			"path": "../../LP/portfolio"
+		},
+		{
+			"path": "."
+		},
+		{
+			"path": "../../LP/tocotoco"
+		},
+		{
+			"path": "../../../Local Sites/lp/app/public/wp-content/themes/wp-lp-theme"
+		},
+		{
+			"path": "../../ゲームHP/GUTStrainingGames"
+		},
+		{
+			"path": "../../ポートフォリオサイト/my-portfolio"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "CareNaviAI"
+	}
+}

@@ -1,0 +1,31 @@
+name: Sync LP list
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'lp/**'
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Sync data/lp.json from lp folders
+        run: node scripts/sync-lp.js
+
+      - name: Commit changes if needed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/lp.json
+          git diff --cached --quiet || git commit -m "chore: sync lp.json from lp folders"
+          git push
