@@ -741,6 +741,7 @@ footer {
   border: 1px solid var(--line);
   padding: 2rem;
   transition: filter .3s ease;
+  z-index: 1;
 }
 
 .lp-banner:hover {
