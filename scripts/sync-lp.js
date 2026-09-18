@@ -1,6 +1,7 @@
 // lp/<フォルダ名>/index.html を全てスキャンし、
 // <title>・meta description(og:description)・meta og:image から
 // カード情報を組み立てて data/lp.json に書き出す。
+// thumbnail がない場合は lp/<フォルダ名>/img/ 内の画像を1枚使用する。
 // GitHub Actions（.github/workflows/sync-lp.yml）から push 時に自動実行される。
 
 const fs = require('fs');
@@ -13,9 +14,11 @@ function extractMetaAttrs(tag) {
   const attrs = {};
   const attrRegex = /([\w:-]+)\s*=\s*"([^"]*)"/g;
   let m;
+
   while ((m = attrRegex.exec(tag)) !== null) {
     attrs[m[1].toLowerCase()] = m[2];
   }
+
   return attrs;
 }
 
@@ -27,28 +30,74 @@ function parseLpHtml(html) {
   let thumbnail = '';
 
   const metaTags = html.match(/<meta\b[^>]*>/gi) || [];
+
   metaTags.forEach((tag) => {
     const attrs = extractMetaAttrs(tag);
     const key = attrs.property || attrs.name;
-    if (key === 'og:description' && !description) description = attrs.content || '';
-    if (key === 'description' && !description) description = attrs.content || '';
-    if (key === 'og:image' && !thumbnail) thumbnail = attrs.content || '';
+
+    if (key === 'og:description' && !description) {
+      description = attrs.content || '';
+    }
+
+    if (key === 'description' && !description) {
+      description = attrs.content || '';
+    }
+
+    if (key === 'og:image' && !thumbnail) {
+      thumbnail = attrs.content || '';
+    }
   });
 
   return { title, description, thumbnail };
 }
 
+function findThumbnailFromImgFolder(slug) {
+  const imgDir = path.join(LP_DIR, slug, 'img');
+
+  if (!fs.existsSync(imgDir)) {
+    return '';
+  }
+
+  const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.webp'];
+
+  const images = fs.readdirSync(imgDir)
+    .filter((file) => {
+      const ext = path.extname(file).toLowerCase();
+      return imageExtensions.includes(ext);
+    })
+    .sort();
+
+  if (images.length === 0) {
+    return '';
+  }
+
+  return `lp/${slug}/img/${images[0]}`;
+}
+
 function resolveThumbnail(slug, thumbnail) {
-  if (!thumbnail) return '';
-  if (/^https?:\/\//i.test(thumbnail) || thumbnail.startsWith('/')) return thumbnail;
-  return `lp/${slug}/${thumbnail}`;
+  // og:image が設定されている場合
+  if (thumbnail) {
+    if (
+      /^https?:\/\//i.test(thumbnail) ||
+      thumbnail.startsWith('/')
+    ) {
+      return thumbnail;
+    }
+
+    return `lp/${slug}/${thumbnail}`;
+  }
+
+  // og:image がない場合は img フォルダから1枚使用
+  return findThumbnailFromImgFolder(slug);
 }
 
 function main() {
   if (!fs.existsSync(LP_DIR)) {
     console.log('lp ディレクトリが見つかりません。data/lp.json を空配列にします。');
+
     fs.mkdirSync(path.dirname(OUTPUT_FILE), { recursive: true });
     fs.writeFileSync(OUTPUT_FILE, '[]\n', 'utf-8');
+
     return;
   }
 
@@ -60,6 +109,7 @@ function main() {
 
   slugs.forEach((slug) => {
     const indexPath = path.join(LP_DIR, slug, 'index.html');
+
     if (!fs.existsSync(indexPath)) return;
 
     const html = fs.readFileSync(indexPath, 'utf-8');
@@ -77,7 +127,12 @@ function main() {
   list.sort((a, b) => a.title.localeCompare(b.title, 'ja'));
 
   fs.mkdirSync(path.dirname(OUTPUT_FILE), { recursive: true });
-  fs.writeFileSync(OUTPUT_FILE, JSON.stringify(list, null, 2) + '\n', 'utf-8');
+  fs.writeFileSync(
+    OUTPUT_FILE,
+    JSON.stringify(list, null, 2) + '\n',
+    'utf-8'
+  );
+
   console.log(`OK: ${list.length}件のLPを data/lp.json に書き出しました`);
 }
 
