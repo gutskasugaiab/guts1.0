@@ -729,7 +729,7 @@ footer {
 }
 
 /* PC：2列・画像と文字を横並び */
-@media (min-width: 1024px) {
+@media (min-width: 767px) {
   .lp-banner-grid {
     grid-template-columns: 1fr 1fr;
   }
