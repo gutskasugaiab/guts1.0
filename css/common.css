@@ -726,12 +726,7 @@ footer {
   display: grid;
   gap: 2rem;
   margin: 2rem 6vw;
-}
-
-@media (min-width: 1000px) {
-  .lp-banner-grid {
-    grid-template-columns: 1fr 1fr;
-  }
+  grid-template-columns: 1fr 1fr;
 }
 
 .lp-banner {
@@ -748,8 +743,8 @@ footer {
 }
 
 .lp-banner-thumb {
-  flex: 0 0 20rem;
-  aspect-ratio: 16 / 12;
+  flex: 0 0 30rem;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
 }
 
